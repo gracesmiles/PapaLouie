@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+
+# Virtual environments
+env/
+venv/
+
+# IDEs and editors
+.vscode/
+*.swp
+
+# Mac/Linux junk
+.DS_Store
+
+# Pygame assets (optional)
+*.ogg
+*.wav
+*.mp3
+
+# Logs
+*.log
