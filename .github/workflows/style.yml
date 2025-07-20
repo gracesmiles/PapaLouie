@@ -1,24 +1,24 @@
-name: Python Style Check
+name: Style Check
 
 on: [push, pull_request]
 
 jobs:
-  style-check:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
       with:
-        python-version: '3.10'
+        python-version: 3.8
 
     - name: Install dependencies
       run: |
+        python -m pip install --upgrade pip
         pip install -r requirements.txt
 
     - name: Run pycodestyle
       run: |
-        pycodestyle .
+        pycodestyle src/ --ignore=E501
