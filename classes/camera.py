@@ -5,6 +5,7 @@ Camera movement to follow the player
 import pygame
 from settings import SETTINGS  # Import game settings
 
+
 class Camera:
     def __init__(self, width, height):
         """Initializes the camera with boundaries to follow the player properly."""
