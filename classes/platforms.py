@@ -1,0 +1,3 @@
+"""
+Static and moving platforms
+"""
