@@ -4,6 +4,7 @@ Menus, start screen, health bar, rescued counter
 
 import pygame
 
+
 class UI:
     def __init__(self, screen):
         """Initialize fonts and screen reference."""
