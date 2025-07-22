@@ -2,6 +2,7 @@ import pygame
 from classes.gameObject import GameObject
 import settings
 
+
 class Enemy(GameObject):
     def __init__(self, x, y, speed, health):
         """
@@ -41,15 +42,18 @@ class BasicEnemy(Enemy):
         """A basic enemy that moves straight down."""
         super().__init__(x, y, speed=3, health=2)
 
+
 class FastEnemy(Enemy):
     def __init__(self, x, y):
         """A fast-moving enemy with low health."""
         super().__init__(x, y, speed=6, health=1)
 
+
 class StrongEnemy(Enemy):
     def __init__(self, x, y):
         """A slower but stronger enemy."""
         super().__init__(x, y, speed=2, health=3)
+
 
 class ZigZagEnemy(Enemy):
     def __init__(self, x, y):
@@ -64,6 +68,7 @@ class ZigZagEnemy(Enemy):
             self.direction *= -1  # Change direction at screen edges
         super().move()
 
+
 class HomingEnemy(Enemy):
     def __init__(self, x, y, player):
         """An enemy that follows the player's position."""
@@ -77,6 +82,7 @@ class HomingEnemy(Enemy):
         elif self.player.x < self.x:
             self.x -= self.speed
         super().move()
+
 
 class RushEnemy(Enemy):
     def __init__(self, x, y):
