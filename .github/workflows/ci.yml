@@ -23,4 +23,4 @@ jobs:
     #  run: python -m unittest discover -s tests
 
     - name: Run pycodestyle
-      run: pycodestyle src/ --ignore=E501
+      run: pycodestyle classes/ --ignore=E501
