@@ -35,8 +35,8 @@ class Enemy(GameObject):
         """Draws the enemy on the screen."""
         screen.blit(self.image, (self.x, self.y))
 
-# Enemy Subclasses with Polymorphic Movement
 
+# Enemy Subclasses with Polymorphic Movement
 class BasicEnemy(Enemy):
     def __init__(self, x, y):
         """A basic enemy that moves straight down."""
@@ -96,4 +96,3 @@ class RushEnemy(Enemy):
             self.y += self.rush_speed
         else:
             super().move()
-
