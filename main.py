@@ -79,7 +79,7 @@ while running:
 
         # Draw the player with camera offset and UI elements
         screen.blit(player.image, camera.apply(player))
-        ui.draw_score(game.score, game.get_time_left())
+        ui.draw_score(game.score)
 
         # Draw platforms with camera offset
         for platform in level_manager.platforms:
