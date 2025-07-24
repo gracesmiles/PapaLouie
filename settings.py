@@ -62,9 +62,9 @@ LEVELS = {
             {"x": 200, "y": 400, "type": "licorice_normal"},
             {"x": 400, "y": 300, "type": "licorice_moving"},
             {"x": 800, "y": 200, "type": "licorice_normal"},
-            {"x": 1000, "y": 350, "type": "licorice_normal"}
-            {"x": 0, "y": 0, "type": "platform1"}
-            {"x": 100, "y": 0, "type": "platform1"}
+            {"x": 1000, "y": 350, "type": "licorice_normal"},
+            {"x": 0, "y": 0, "type": "platform1"},
+            {"x": 100, "y": 0, "type": "platform1"},
             {"x": 200, "y": 0, "type": "platform1"}
         ],
         "collectibles": [
