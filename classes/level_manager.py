@@ -44,7 +44,7 @@ class LevelManager:
         if current_index < len(level_keys) - 1:
             self.level_name = level_keys[current_index + 1]
             self.platforms.empty()
-            #self.collectibles.empty()
+            self.collectibles.empty()
             self.load_level()
             return True
         return False  # No next level available
