@@ -9,7 +9,7 @@ class Collectible(pygame.sprite.Sprite):
         self.image = pygame.image.load(COLLECTIBLES[collectible_type]["image"])  # Load the correct image
         self.image = pygame.transform.scale(self.image, (30, 30))  # Resize for consistency
         self.rect = self.image.get_rect(topleft=(x, y))
-        self.life = COLLECTIBLES[collectible_type]["life"]  # Store the point value
+        self.life = COLLECTIBLES[collectible_type]["points"]  # Store the point value
 
 
 class Heart(Collectible):
