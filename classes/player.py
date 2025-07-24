@@ -43,8 +43,7 @@ class Player(pygame.sprite.Sprite):
         for platform in platforms:
             if self.rect.colliderect(platform.rect) and self.vel_y >= 0:
                # There is a bit of a gap in the png...
-                print(f"Currently: {platform}")
-                if platform == 'platform1':
+                if platform == '<Platform Sprite(in 1 groups)>':
                     self.rect.bottom = platform.rect.top + 30  # Snap player on top of platform
                 else:
                     self.rect.bottom = platform.rect.top  # Snap player on top of platform
