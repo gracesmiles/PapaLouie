@@ -35,7 +35,12 @@ PLATFORM_SETTINGS = {
         "width": 120,
         "height": 20,
         "speed": 1
-    }   
+    },
+    "platform1": {
+        "image": "assets/images/platform1.png",
+        "width": 100,
+        "height": 50
+    }
 }
 
 GAME_STATES = {
@@ -58,6 +63,9 @@ LEVELS = {
             {"x": 400, "y": 300, "type": "licorice_moving"},
             {"x": 800, "y": 200, "type": "licorice_normal"},
             {"x": 1000, "y": 350, "type": "licorice_normal"}
+            {"x": 0, "y": 0, "type": "platform1"}
+            {"x": 100, "y": 0, "type": "platform1"}
+            {"x": 200, "y": 0, "type": "platform1"}
         ],
         "collectibles": [
             {"x": 250, "y": 370, "type": "heart"},
