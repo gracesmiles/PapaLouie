@@ -29,11 +29,12 @@ class LevelManager:
             if item_data["type"] == "coin":
                 collectible = Heart(item_data["x"], item_data["y"])
             self.collectibles.add(collectible)
-"""
+            
+    """
     def get_remaining_coins(self):
         #Returns a list of remaining coins in the current level.
         return [c for c in self.collectibles if isinstance(c, Coin)]
-        """
+    """
 
     def next_level(self):
         """Loads the next level if available."""
