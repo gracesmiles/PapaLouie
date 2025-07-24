@@ -29,6 +29,11 @@ class Player(pygame.sprite.Sprite):
             self.vel_y = -PLAYER_SETTINGS["jump_power"]  # Jump if on ground
             self.on_ground = False  # Set to False so gravity applies again
 
+    # Identify weird platform
+    image = "/assets/images/platform1.png"
+    self.weird_platform = Platform(x, y, image)
+    platforms.add(self.weird_platform)
+    
     def apply_gravity(self, platforms):
         """Applies gravity to the player."""
         self.vel_y += PLAYER_SETTINGS["gravity"]
@@ -38,12 +43,12 @@ class Player(pygame.sprite.Sprite):
             self.rect.bottom = 560
             self.vel_y = 0
             self.on_ground = True
-
+        
         # Check for collision with platforms
         for platform in platforms:
             if self.rect.colliderect(platform.rect) and self.vel_y >= 0:
                # There is a bit of a gap in the png...
-                if platform == '<Platform Sprite(in 1 groups)>':
+                if platform is self.weird_platform:
                     self.rect.bottom = platform.rect.top + 30  # Snap player on top of platform
                 else:
                     self.rect.bottom = platform.rect.top  # Snap player on top of platform
