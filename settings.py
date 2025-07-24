@@ -10,7 +10,7 @@ SETTINGS = {
     "FPS": 60,          # Frames per second
     "BG_COLOR": (135, 206, 235),  # Light blue background
     "TITLE": "Simple Platformer",  # Window title
-    "background": "assets/images/background.png"
+    "BG_IMAGE": "assets/images/background.png"
 }
 
 PLAYER_SETTINGS = {
