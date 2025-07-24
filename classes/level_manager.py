@@ -11,7 +11,7 @@ class LevelManager:
         """Initialize the level manager and load the first level."""
         self.level_name = level_name
         self.platforms = pygame.sprite.Group()
-        #self.collectibles = pygame.sprite.Group()
+        self.collectibles = pygame.sprite.Group()
         self.load_level()
 
     def load_level(self):
