@@ -33,11 +33,9 @@ class LevelManager:
             self.collectibles.add(collectible)
 
     def get_remaining_coins(self):
-        """Returns a list of remaining coins in the current level."""
+        #Returns a list of remaining coins in the current level.
         return [c for c in self.collectibles if isinstance(c, Coin)]
-            
-      """
-
+    """
 
     def next_level(self):
         """Loads the next level if available."""
