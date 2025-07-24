@@ -59,7 +59,7 @@ while running:
                 player.rect.topleft = (100, 500)
 
     screen.fill(SETTINGS["BG_COLOR"])  
-    screen.blit(background, (0, 0)) 
+    screen.blit(background, (-camera.camera.x, -camera.camera.y))
 
     if game.state == GAME_STATES["MENU"]:
         ui.draw_menu()
