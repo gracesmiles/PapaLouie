@@ -30,6 +30,10 @@ class Game:
         """Increases the player's score."""
         self.score += amount
 
+    def increase_life(self, amount=1):
+        """Increases the player's life"""
+        self.score += amount
+
     def get_time_left(self):
         """Calculates remaining time in seconds."""
         if self.start_time:
