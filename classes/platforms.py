@@ -5,6 +5,7 @@ Static and moving platforms
 import pygame
 from settings import PLATFORM_SETTINGS  # Import platform settings
 
+
 class Platform(pygame.sprite.Sprite):
     def __init__(self, x, y, platform_type="normal"):
         super().__init__()
