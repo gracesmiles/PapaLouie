@@ -30,13 +30,11 @@ class UI:
         self.draw_text(f"Final Score: {score}", 400, 320, (50, 50, 50))  # Dark gray score
         self.draw_text("Press R to Restart", 400, 400, (0, 0, 128))  # Dark blue restart prompt
 
-    def draw_score(self, score, time_left):
+    def draw_score(self, score):
         """Displays the current score and timer."""
         self.draw_text(f"Score: {score}", 50, 40, (0, 0, 0), center=False)  # Black text, top left
-        self.draw_text(f"Time: {time_left}s", 600, 40, (0, 0, 0), center=False)  # Black text, top right
 
-    def draw_hud(self, level_name, score, time_left):
+    def draw_hud(self, level_name, score):
         """Displays the level, score, and timer on the HUD."""
         self.draw_text(f"Level: {level_name}", 50, 10, (0, 0, 0), center=False)  # Level text
         self.draw_text(f"Score: {score}", 50, 40, (0, 0, 0), center=False)  # Score text
-        self.draw_text(f"Time: {time_left}s", 600, 40, (0, 0, 0), center=False)  # Timer text
