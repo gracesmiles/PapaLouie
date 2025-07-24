@@ -25,6 +25,14 @@ game = Game()
 ui = UI(screen)
 level_manager = LevelManager("level_1")
 
+# Create collectible group
+collectibles = pygame.sprite.Group()
+for _ in range(5):  # Spawn 5 random collectibles
+    x = random.randint(100, 700)
+    y = random.randint(100, 500)
+    if random.choice([True, False]):
+        collectibles.add(Heart(x, y))
+
 # Create Camera instance
 camera = Camera(SETTINGS["WIDTH"] + 400, SETTINGS["HEIGHT"])  # Extend world horizontally
 
@@ -66,7 +74,7 @@ while running:
         # Detect collisions
         collected = pygame.sprite.spritecollide(player, level_manager.collectibles, True)
         for item in collected:
-            game.increase_score(item.points)
+            game.increase_life(item.points)
 
         # Draw the player with camera offset and UI elements
         screen.blit(player.image, camera.apply(player))
