@@ -1,5 +1,6 @@
 import pygame
 from settings import SETTINGS, PLAYER_SETTINGS  # Import game and player settings
+from classes.platform import Platform
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
