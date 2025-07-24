@@ -53,11 +53,11 @@ LEVELS = {
             {"x": 1000, "y": 350, "type": "licorice_normal"}
         ],
         "collectibles": [
-            {"x": 250, "y": 370, "type": "coin"},
-            {"x": 450, "y": 270, "type": "coin"},
-            {"x": 650, "y": 170, "type": "bomb"},
-            {"x": 550, "y": 470, "type": "coin"},
-            {"x": 1100, "y": 300, "type": "coin"}
+            {"x": 250, "y": 370, "type": "heart"},
+            {"x": 450, "y": 270, "type": "heart"},
+            {"x": 650, "y": 170, "type": "heart"},
+            {"x": 550, "y": 470, "type": "heart"},
+            {"x": 1100, "y": 300, "type": "heart"}
         ]
     },
     "level_2": {
@@ -68,10 +68,10 @@ LEVELS = {
             {"x": 700, "y": 200, "type": "licorice_normal"}
         ],
         "collectibles": [
-            {"x": 230, "y": 470, "type": "coin"},
-            {"x": 320, "y": 370, "type": "bomb"},
-            {"x": 520, "y": 270, "type": "coin"},
-            {"x": 720, "y": 170, "type": "coin"}
+            {"x": 230, "y": 470, "type": "heart"},
+            {"x": 320, "y": 370, "type": "heart"},
+            {"x": 520, "y": 270, "type": "heart"},
+            {"x": 720, "y": 170, "type": "heart"}
         ]
     }
 }
