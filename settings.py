@@ -44,6 +44,13 @@ GAME_STATES = {
     "GAME_OVER": "game_over"
 }
 
+COLLECTIBLES = {
+    "heart": {
+        "image": "assets/images/heart.png",
+        "points": 1  # Increases score by 10
+    }
+}
+
 LEVELS = {
     "level_1": {
         "platforms": [
