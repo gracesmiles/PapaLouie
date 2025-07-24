@@ -1,14 +1,35 @@
-class Player:
+import pygame
+from settings import SETTINGS, PLAYER_SETTINGS  # Import game and player settings
+
+class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
-        self.x = x
-        self.y = y
-        self.speed = 5
-        # More attributes like health, score...
+        super().__init__()
+        original_image = pygame.image.load("assets/images/player.png")  # Load original image
+        self.image = pygame.transform.scale(original_image, (50, 50))  # Scale image
+        self.rect = self.image.get_rect(topleft=(x, y))
+        self.vel_y = 0  # Vertical velocity for jumping
+        self.on_ground = False  # Track if player is on a surface
 
-    def move(self, direction):
-        # Update player position based on direction
-        pass
+    def move(self, keys):
+        """Handles left, right movement and jumping."""
+        if keys[pygame.K_LEFT]:
+            self.rect.x -= PLAYER_SETTINGS["speed"]
+        if keys[pygame.K_RIGHT]:
+            self.rect.x += PLAYER_SETTINGS["speed"]
 
-    def draw(self, screen):
-        # Draw player sprite on screen
-        pass
+        # Prevent player from moving beyond the left boundary
+        if self.rect.left < 0:
+            self.rect.left = 0
+
+        # Righthand boundary value
+        if self.rect.right > SETTINGS["WIDTH"] + 400:  
+            self.rect.right = SETTINGS["WIDTH"] + 400
+
+        if keys[pygame.K_SPACE] and self.on_ground:
+            self.vel_y = -PLAYER_SETTINGS["jump_power"]  # Jump if on ground
+            self.on_ground = False  # Set to False so gravity applies again
+
+    def apply_gravity(self):
+        """Applies gravity to the player."""
+        self.vel_y += PLAYER_SETTINGS["gravity"]
+        self.rect.y += self.vel_y
