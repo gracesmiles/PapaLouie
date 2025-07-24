@@ -34,16 +34,7 @@ class Game:
         """Increases the player's life"""
         self.score += amount
 
-    def get_time_left(self):
-        """Calculates remaining time in seconds."""
-        if self.start_time:
-            elapsed_time = (pygame.time.get_ticks() - self.start_time) / 1000
-            return max(0, GAME_TIME - int(elapsed_time))
-        return GAME_TIME
-
     def check_win_or_lose(self):
         """Checks if the game should end based on score or time."""
         if self.score >= WIN_SCORE:
             self.state = GAME_STATES["GAME_OVER"]  # Win condition
-        elif self.get_time_left() <= 0:
-            self.state = GAME_STATES["GAME_OVER"]  # Lose condition
