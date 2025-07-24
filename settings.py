@@ -28,7 +28,7 @@ licorice.save("assets/images/horizontal_red_licorice.png")
 img_platform1 = Image.open("assets/images/platform1.png")
 crop_box = (0, 0, 200, 170)
 cropped_img = img_platform1.crop(crop_box)
-cropped_img.save("assets/images/platform01.jpg")
+cropped_img.save("assets/images/platform01.png")
 
 PLATFORM_SETTINGS = {
     "licorice_normal": {
