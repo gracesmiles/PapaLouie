@@ -28,7 +28,7 @@ class LevelManager:
         for item_data in level_data["collectibles"]:
             if item_data["type"] == "coin":
                 collectible = Heart(item_data["x"], item_data["y"])
-            self.collectibles.add(collectible)
+                self.collectibles.add(collectible)
             
     def get_remaining_hearts(self):
         #Returns a list of remaining hearts in the current level.
