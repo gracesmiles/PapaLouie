@@ -1,11 +1,12 @@
 import pygame
 import random  # Import Random Module
-from settings import SETTINGS , GAME_STATES  # Import game settings, game states
+from settings import SETTINGS , GAME_STATES, WIN_SCORE  # Import game settings, game states, and win score
 from classes.player import Player # Import player from the player class
 from classes.platform import Platform # Import Platform from the platform class
 from classes.camera import Camera  # Import Camera
 from classes.game import Game  # Import Game Manager
 from classes.ui import UI # Import UI Elements
+from classes.collectible import Heart  # Import coin and bomb from collectible class
 from classes.level_manager import LevelManager  # Import LevelManager
 
 
