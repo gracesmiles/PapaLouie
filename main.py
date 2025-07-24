@@ -59,7 +59,9 @@ while running:
                 player.rect.topleft = (100, 500)
 
     screen.fill(SETTINGS["BG_COLOR"])  
-    screen.blit(background, (-camera.camera.x, -camera.camera.y))
+    bg_x = -camera.camera.x  # Camera follows horizontally
+    bg_y = SETTINGS["HEIGHT"] - background.get_height() - camera.camera.y  # Align bottom vertically
+    screen.blit(background, (bg_x, bg_y))
 
     if game.state == GAME_STATES["MENU"]:
         ui.draw_menu()
