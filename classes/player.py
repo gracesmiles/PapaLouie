@@ -29,7 +29,7 @@ class Player(pygame.sprite.Sprite):
             self.vel_y = -PLAYER_SETTINGS["jump_power"]  # Jump if on ground
             self.on_ground = False  # Set to False so gravity applies again
 
-    def apply_gravity(self):
+    def apply_gravity(self, platforms):
         """Applies gravity to the player."""
         self.vel_y += PLAYER_SETTINGS["gravity"]
         self.rect.y += self.vel_y
