@@ -1,5 +1,5 @@
 import pygame
-from settings import GAME_STATES, WIN_SCORE, GAME_TIME
+from settings import GAME_STATES
 
 class Game:
     def __init__(self):
