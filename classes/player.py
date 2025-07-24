@@ -29,10 +29,6 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_SPACE] and self.on_ground:
             self.vel_y = -PLAYER_SETTINGS["jump_power"]  # Jump if on ground
             self.on_ground = False  # Set to False so gravity applies again
-
-    # Identify weird platform
-    self.weird_platform = Platform(0, 570, "platform1")
-    platforms.add(self.weird_platform)
     
     def apply_gravity(self, platforms):
         """Applies gravity to the player."""
@@ -47,10 +43,7 @@ class Player(pygame.sprite.Sprite):
         # Check for collision with platforms
         for platform in platforms:
             if self.rect.colliderect(platform.rect) and self.vel_y >= 0:
-               # There is a bit of a gap in the png...
-                if platform is self.weird_platform:
-                    self.rect.bottom = platform.rect.top + 30  # Snap player on top of platform
-                else:
-                    self.rect.bottom = platform.rect.top  # Snap player on top of platform
+                self.rect.bottom = platform.rect.top + 30  # Snap player on top of platform
+                self.rect.bottom = platform.rect.top  # Snap player on top of platform
                 self.vel_y = 0  # Stop downward motion
                 self.on_ground = True  # Player is grounded
