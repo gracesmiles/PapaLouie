@@ -24,7 +24,7 @@ class LevelManager:
             self.platforms.add(platform)
 
         # Create collectibles
-      """
+        """
         for item_data in level_data["collectibles"]:
             if item_data["type"] == "coin":
                 collectible = Coin(item_data["x"], item_data["y"])
@@ -35,7 +35,7 @@ class LevelManager:
     def get_remaining_coins(self):
         #Returns a list of remaining coins in the current level.
         return [c for c in self.collectibles if isinstance(c, Coin)]
-    """
+        """
 
     def next_level(self):
         """Loads the next level if available."""
