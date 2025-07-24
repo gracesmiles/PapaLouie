@@ -47,10 +47,10 @@ GAME_STATES = {
 LEVELS = {
     "level_1": {
         "platforms": [
-            {"x": 200, "y": 400, "type": "normal"},
-            {"x": 400, "y": 300, "type": "moving"},
-            {"x": 800, "y": 200, "type": "normal"},
-            {"x": 1000, "y": 350, "type": "normal"}
+            {"x": 200, "y": 400, "type": "licorice_normal"},
+            {"x": 400, "y": 300, "type": "licorice_moving"},
+            {"x": 800, "y": 200, "type": "licorice_normal"},
+            {"x": 1000, "y": 350, "type": "licorice_normal"}
         ],
         "collectibles": [
             {"x": 250, "y": 370, "type": "coin"},
@@ -62,10 +62,10 @@ LEVELS = {
     },
     "level_2": {
         "platforms": [
-            {"x": 100, "y": 500, "type": "normal"},
-            {"x": 300, "y": 400, "type": "moving"},
-            {"x": 500, "y": 300, "type": "normal"},
-            {"x": 700, "y": 200, "type": "normal"}
+            {"x": 100, "y": 500, "type": "licorice_normal"},
+            {"x": 300, "y": 400, "type": "licorice_moving"},
+            {"x": 500, "y": 300, "type": "licorice_normal"},
+            {"x": 700, "y": 200, "type": "licorice_normal"}
         ],
         "collectibles": [
             {"x": 230, "y": 470, "type": "coin"},
