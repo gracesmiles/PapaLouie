@@ -43,3 +43,35 @@ GAME_STATES = {
     "PLAYING": "playing",
     "GAME_OVER": "game_over"
 }
+
+LEVELS = {
+    "level_1": {
+        "platforms": [
+            {"x": 200, "y": 400, "type": "normal"},
+            {"x": 400, "y": 300, "type": "moving"},
+            {"x": 800, "y": 200, "type": "normal"},
+            {"x": 1000, "y": 350, "type": "normal"}
+        ],
+        "collectibles": [
+            {"x": 250, "y": 370, "type": "coin"},
+            {"x": 450, "y": 270, "type": "coin"},
+            {"x": 650, "y": 170, "type": "bomb"},
+            {"x": 550, "y": 470, "type": "coin"},
+            {"x": 1100, "y": 300, "type": "coin"}
+        ]
+    },
+    "level_2": {
+        "platforms": [
+            {"x": 100, "y": 500, "type": "normal"},
+            {"x": 300, "y": 400, "type": "moving"},
+            {"x": 500, "y": 300, "type": "normal"},
+            {"x": 700, "y": 200, "type": "normal"}
+        ],
+        "collectibles": [
+            {"x": 230, "y": 470, "type": "coin"},
+            {"x": 320, "y": 370, "type": "bomb"},
+            {"x": 520, "y": 270, "type": "coin"},
+            {"x": 720, "y": 170, "type": "coin"}
+        ]
+    }
+}
