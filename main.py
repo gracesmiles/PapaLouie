@@ -9,6 +9,9 @@ pygame.init()
 screen = pygame.display.set_mode((SETTINGS["WIDTH"], SETTINGS["HEIGHT"]))
 pygame.display.set_caption(SETTINGS["TITLE"])
 
+# Load the background image
+background = pygame.image.load(SETTINGS["BG_IMAGE"])
+
 # Create player instance
 player = Player(100, 500)
 
