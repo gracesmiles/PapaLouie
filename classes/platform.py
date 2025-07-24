@@ -7,7 +7,7 @@ from settings import PLATFORM_SETTINGS  # Import platform settings
 
 
 class Platform(pygame.sprite.Sprite):
-    def __init__(self, x, y, platform_type="normal"):
+    def __init__(self, x, y, platform_type="licorice_normal"):
         super().__init__()
         self.type = platform_type
         self.image = pygame.image.load(PLATFORM_SETTINGS[platform_type]["image"])
@@ -19,7 +19,7 @@ class Platform(pygame.sprite.Sprite):
 
     def update(self):
         """Moves the platform if it's a moving type."""
-        if self.type == "moving":
+        if self.type == "licorice_moving":
             self.rect.x += self.speed
             # Reverse direction if hitting a boundary
             if self.rect.right >= 800 or self.rect.left <= 0:
