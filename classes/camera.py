@@ -12,7 +12,7 @@ class Camera:
         self.camera = pygame.Rect(0, 0, width, height)  # Camera viewport
         self.world_width = width  # Define world width
         self.world_height = height
-        self.camera.y = self.world - SETTINGS["HEIGHT"]
+        self.camera.y = self.world_height - SETTINGS["HEIGHT"]
 
     def update(self, player):
         """Centers the camera on the player unless at the world boundaries."""
