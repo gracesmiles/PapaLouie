@@ -9,6 +9,8 @@ screen = pygame.display.set_mode((SETTINGS["WIDTH"], SETTINGS["HEIGHT"]))
 pygame.display.set_caption(SETTINGS["TITLE"])
 
 # Game loop
+print("Game Running!")
+
 running = True
 while running:
     for event in pygame.event.get():
