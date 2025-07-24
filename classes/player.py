@@ -31,7 +31,7 @@ class Player(pygame.sprite.Sprite):
             self.on_ground = False  # Set to False so gravity applies again
 
     # Identify weird platform
-    image = "/assets/images/platform1.png"
+    image = "assets/images/platform1.png"
     self.weird_platform = Platform(0, 570, image)
     platforms.add(self.weird_platform)
     
