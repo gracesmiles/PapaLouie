@@ -34,7 +34,7 @@ PLATFORM_SETTINGS = {
         "image": "assets/images/horizontal_red_licorice.png",
         "width": 120,
         "height": 20,
-        "speed": 0.4
+        "speed": 0.6
     },
     "platform01": {
         "image": "assets/images/platform01.png",
