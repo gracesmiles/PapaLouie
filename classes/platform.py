@@ -23,4 +23,4 @@ class Platform(pygame.sprite.Sprite):
             self.rect.x += self.speed
             # Reverse direction if hitting a boundary
             if self.rect.right >= 800 or self.rect.left <= 0:
-                self.speed *= -0.7
+                self.speed *= -1
