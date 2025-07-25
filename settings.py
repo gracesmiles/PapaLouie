@@ -24,12 +24,6 @@ img_licorice = Image.open("assets/images/red_licorice.png")
 licorice = img_licorice.rotate(-90, expand=True)
 licorice.save("assets/images/horizontal_red_licorice.png")
 
-# Crop platform1
-img_platform1 = Image.open("assets/images/platform1.png")
-crop_box = (0, 0, 200, 170)
-cropped_img = img_platform1.crop(crop_box)
-cropped_img.save("assets/images/platform01.png")
-
 PLATFORM_SETTINGS = {
     "licorice_normal": {
         "image": "assets/images/horizontal_red_licorice.png",
