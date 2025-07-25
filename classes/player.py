@@ -6,7 +6,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
         original_image = pygame.image.load("assets/images/player.png")  # Load original image
-        self.image = pygame.transform.scale(original_image, (50, 50))  # Scale image
+        self.image = pygame.transform.scale(original_image, (50, 80))  # Scale image
         self.rect = self.image.get_rect(topleft=(x, y))
         self.vel_y = 0  # Vertical velocity for jumping
         self.on_ground = False  # Track if player is on a surface
