@@ -15,8 +15,8 @@ SETTINGS = {
 
 PLAYER_SETTINGS = {
     "speed": 2,         # How fast the player moves left/right
-    "jump_power": 15,   # How high the player jumps
-    "gravity": 0.5,     # Strength of gravity pulling the player down
+    "jump_power": 12,   # How high the player jumps
+    "gravity": 0.7,     # Strength of gravity pulling the player down
 }
 
 # Make licorice image horizontal rather than vertical
