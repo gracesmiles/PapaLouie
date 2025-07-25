@@ -38,7 +38,7 @@ PLATFORM_SETTINGS = {
     },
     "platform01": {
         "image": "assets/images/platform01.png",
-        "width": 100,
+        "width": 120,
         "height": 50
     }
 }
@@ -64,8 +64,8 @@ LEVELS = {
             {"x": 800, "y": 200, "type": "licorice_normal"},
             {"x": 1000, "y": 350, "type": "licorice_normal"},
             {"x": 0, "y": 550, "type": "platform01"},
-            {"x": 90, "y": 550, "type": "platform01"},
-            {"x": 180, "y": 550, "type": "platform01"}
+            {"x": 110, "y": 550, "type": "platform01"},
+            {"x": 220, "y": 550, "type": "platform01"}
         ],
         "collectibles": [
             {"x": 250, "y": 370, "type": "heart"},
