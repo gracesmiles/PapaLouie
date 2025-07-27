@@ -49,11 +49,12 @@ class Player(pygame.sprite.Sprite):
         length_list = 2
         if moving:
             self.animation_counter = (self.animation_counter + 1) % length_list
-        else:
+        
+        """else:
             if self.facing_right == True:
                 self.image = self.walk_right[0]
             else:
-                self.image = self.walk_left[0]
+                self.image = self.walk_left[0]"""
 
         # Prevent player from moving beyond the left boundary
         if self.rect.left < 0:
