@@ -47,7 +47,8 @@ PLATFORM_SETTINGS = {
 GAME_STATES = {
     "MENU": "menu",
     "PLAYING": "playing",
-    "GAME_OVER": "game_over"
+    "GAME_OVER": "game_over",
+    "PAUSED": "paused"
 }
 
 COLLECTIBLES = {
