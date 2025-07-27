@@ -45,6 +45,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.x += PLAYER_SETTINGS["speed"]
             self.facing_right = True
             moving = True
+            self.image = self.walk_right[self.animation_counter]
 
         length_list = 2
         if moving:
