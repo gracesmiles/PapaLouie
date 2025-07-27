@@ -91,7 +91,7 @@ while running:
             screen.blit(collectible.image, camera.apply(collectible))
 
         # idk
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+        if event.key == pygame.K_p:
             ui.draw_pause_menu()
 
     elif game.state == GAME_STATES["GAME_OVER"]:
