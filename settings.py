@@ -65,7 +65,8 @@ LEVELS = {
             {"x": 1000, "y": 350, "type": "licorice_normal"},
             {"x": 0, "y": 550, "type": "platform01"},
             {"x": 110, "y": 550, "type": "platform01"},
-            {"x": 220, "y": 550, "type": "platform01"}
+            {"x": 220, "y": 550, "type": "platform01"},
+            {"x": 400, "y": 550, "type": "platform01"}
         ],
         "collectibles": [
             {"x": 250, "y": 370, "type": "heart"},
