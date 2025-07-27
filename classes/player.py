@@ -24,7 +24,6 @@ class Player(pygame.sprite.Sprite):
             pygame.transform.scale(pygame.image.load("assets/images/playerRight_walk1.png"), (50, 80)),
             pygame.transform.scale(pygame.image.load("assets/images/playerRight_walk2.png"), (50, 80))
         ]
-        length_list = 2
         self.image = self.walk_right[0]  # Starting image
         self.rect = self.image.get_rect(topleft=(x, y))
         self.vel_y = 0  # Vertical velocity for jumping
@@ -47,6 +46,7 @@ class Player(pygame.sprite.Sprite):
             self.facing_right = True
             moving = True
 
+        length_list = 2
         if moving:
             self.animation_counter = (self.animation_counter + 1) % length_list
         else:
