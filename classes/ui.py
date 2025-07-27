@@ -38,3 +38,12 @@ class UI:
         """Displays the level, score, and timer on the HUD."""
         self.draw_text(f"Level: {level_name}", 50, 10, (0, 0, 0), center=False)  # Level text
         self.draw_text(f"Score: {score}", 50, 40, (0, 0, 0), center=False)  # Score text
+
+    def draw(self, color=(128, 0, 128)):
+        self.options = ["Resume", "Quit"]
+        resume_surface = self.font.render("Resume", True, color)
+        resume_rect = text_surface.get_rect(center=(400, 200))
+        quit_surface = self.font.render("Quit", True, color)
+        quit_rect = text_surface.get_rect(center=(400, 300))
+        self.screen.blit(resume_surface, resume_rect)  
+        self.screen.blit(quit_surface, quit_rect)
