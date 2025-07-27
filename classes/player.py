@@ -4,8 +4,8 @@ from classes.platform import Platform
 
 # Transform Images
 # Make left and right
-right1Load = original_image = pygame.image.load("assets/images/playerLeft_walk1.png")
-right2Load = original_image = pygame.image.load("assets/images/playerLeft_walk2.png")
+right1Load = pygame.image.load("assets/images/playerLeft_walk1.png")
+right2Load = pygame.image.load("assets/images/playerLeft_walk2.png")
 right1 = pygame.transform.flip(right1Load, True, False)
 right2 = pygame.transform.flip(right2Load, True, False)
 right1.save("assets/images/playerRight_walk1.png")
