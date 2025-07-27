@@ -19,6 +19,7 @@ PLAYER_SETTINGS = {
     "gravity": 0.7,     # Strength of gravity pulling the player down
 }
 
+# Transform Images
 # Make licorice image horizontal rather than vertical
 img_licorice = Image.open("assets/images/red_licorice.png")
 licorice = img_licorice.rotate(-90, expand=True)
