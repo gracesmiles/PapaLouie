@@ -90,6 +90,10 @@ while running:
         for collectible in level_manager.collectibles:  # Apply camera movement to collectibles
             screen.blit(collectible.image, camera.apply(collectible))
 
+        # idk
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+            ui.draw_pause_menu()
+
     elif game.state == GAME_STATES["GAME_OVER"]:
         pass
 
