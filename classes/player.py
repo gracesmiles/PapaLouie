@@ -8,8 +8,8 @@ right1Load = pygame.image.load("assets/images/playerLeft_walk1.png")
 right2Load = pygame.image.load("assets/images/playerLeft_walk2.png")
 right1 = pygame.transform.flip(right1Load, True, False)
 right2 = pygame.transform.flip(right2Load, True, False)
-right1.save("assets/images/playerRight_walk1.png")
-right2.save("assets/images/playerRight_walk2.png")
+right1.image.save("assets/images/playerRight_walk1.png")
+right2.image.save("assets/images/playerRight_walk2.png")
 
 
 class Player(pygame.sprite.Sprite):
