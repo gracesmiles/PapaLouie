@@ -24,7 +24,7 @@ class Player(pygame.sprite.Sprite):
             pygame.transform.scale(pygame.image.load("assets/images/playerRight_walk1.png"), (50, 80)),
             pygame.transform.scale(pygame.image.load("assets/images/playerRight_walk2.png"), (50, 80))
         ]
-        self.image = self.walk_images_right[0]  # Starting image
+        self.image = self.walk_right[0]  # Starting image
         self.rect = self.image.get_rect(topleft=(x, y))
         self.vel_y = 0  # Vertical velocity for jumping
         self.on_ground = False  # Track if player is on a surface
@@ -40,7 +40,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.x -= PLAYER_SETTINGS["speed"]
             self.facing_right = False
             moving = True
-            self.image = self.walk_images_left[self.animation_counter]
+            self.image = self.walk_left[self.animation_counter]
         if keys[pygame.K_RIGHT]:
             self.rect.x += PLAYER_SETTINGS["speed"]
             self.facing_right = True
@@ -50,9 +50,9 @@ class Player(pygame.sprite.Sprite):
             self.animation_counter = (self.animation_counter + 1) % self.walk_left.length
         else:
             if self.facing_right == True:
-                self.image = self.walk_images_right[0]
+                self.image = self.walk_right[0]
             else:
-                self.image = self.walk_images_left[0]
+                self.image = self.walk_left[0]
 
         # Prevent player from moving beyond the left boundary
         if self.rect.left < 0:
