@@ -2,23 +2,55 @@ import pygame
 from settings import SETTINGS, PLAYER_SETTINGS  # Import game and player settings
 from classes.platform import Platform
 
+# Transform Images
+# Make left and right
+right1 = pygame.transform.flip("assets/images/playerLeft_walk1.png", True, False)
+right2 = pygame.transform.flip("assets/images/playerLeft_walk2.png", True, False)
+right1.save("assets/images/playerRight_walk1.png")
+right2.save("assets/images/playerRight_walk2.png")
+
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
-        original_image = pygame.image.load("assets/images/player.png")  # Load original image
-        self.image = pygame.transform.scale(original_image, (50, 80))  # Scale image
+        # Make lists for walking left or right and scale
+        self.walk_left = [
+            pygame.transform.scale(pygame.image.load("assets/images/playerLeft_walk1.png"), (50, 80)),
+            pygame.transform.scale(pygame.image.load("assets/images/playerLeft_walk2.png"), (50, 80))
+        ]
+        self.walk_right = [
+            pygame.transform.scale(pygame.image.load("assets/images/playerRight_walk1.png"), (50, 80)),
+            pygame.transform.scale(pygame.image.load("assets/images/playerRight_walk2.png"), (50, 80))
+        ]
+        self.image = self.walk_images_right[0]  # Starting image
         self.rect = self.image.get_rect(topleft=(x, y))
         self.vel_y = 0  # Vertical velocity for jumping
         self.on_ground = False  # Track if player is on a surface
         self.fell_off_screen = False    # Track if player is still on platforms
+        self.walk_index = 0
+        self.animation_counter = 0
+        self.facing_right = True
 
     def move(self, keys):
         """Handles left, right movement and jumping."""
+        moving = False
         if keys[pygame.K_LEFT]:
             self.rect.x -= PLAYER_SETTINGS["speed"]
+            self.facing_right = False
+            moving = True
+            self.image = self.walk_images_left[self.animation_counter]
         if keys[pygame.K_RIGHT]:
             self.rect.x += PLAYER_SETTINGS["speed"]
+            self.facing_right = True
+            moving = True
+
+        if moving:
+            self.animation_counter = (self.animation_counter + 1) % self.walk_left.length
+        else:
+            if self.facing_right == True:
+                self.image = self.walk_images_right[0]
+            else:
+                self.image = self.walk_images_left[0]
 
         # Prevent player from moving beyond the left boundary
         if self.rect.left < 0:
