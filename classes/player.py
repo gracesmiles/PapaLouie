@@ -2,6 +2,7 @@ import pygame
 from settings import SETTINGS, PLAYER_SETTINGS  # Import game and player settings
 from classes.platform import Platform
 
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
@@ -10,6 +11,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft=(x, y))
         self.vel_y = 0  # Vertical velocity for jumping
         self.on_ground = False  # Track if player is on a surface
+        self.fell_off_screen = False    # Track if player is still on platforms
 
     def move(self, keys):
         """Handles left, right movement and jumping."""
@@ -34,11 +36,11 @@ class Player(pygame.sprite.Sprite):
         """Applies gravity to the player."""
         self.vel_y += PLAYER_SETTINGS["gravity"]
         self.rect.y += self.vel_y
-        # Prevent player from falling off the screen
-        if self.rect.bottom >= 560:  # Adjust based on game window height
-            self.rect.bottom = 560
-            self.vel_y = 0
-            self.on_ground = True
+        
+        # Check if player fell off the screen
+        if self.rect.bottom >= SETTINGS["HEIGHT"]:  # Adjust based on game window height
+            self.fell_off_screen = True
+            self.on_ground = False
         
         # Check for collision with platforms
         for platform in platforms:
