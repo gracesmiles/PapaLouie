@@ -8,6 +8,7 @@ class Game:
         self.score = 0  # Player's score (coins)
         self.start_time = None  # Track when the game starts
         self.lives = 3  # Player's lives
+        self.coin_effect = pygame.mixer.Sound("assets/audios/coin_collected.wav")
 
     def set_state(self, new_state):
         """Changes the current game state."""
@@ -33,8 +34,9 @@ class Game:
         self.score += amount
 
     def collect_coin(self, amount=1):
-        """Increases the player's coin count."""
+        """Increases the player's coin count and plays sound"""
         self.score += amount
+        self.coin_effect.play()
 
     def lose_life(self):
         """Decreases the player's life and checks for game over."""
