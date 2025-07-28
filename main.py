@@ -15,7 +15,7 @@ pygame.init()
 pygame.mixer.init()
 
 # Play Background Music
-pygame.mixer.music.load("assets/audios/background_music.wav")
+pygame.mixer.music.load("assets/audios/background_music.mp3")
 pygame.mixer.music.set_volume(0.5)  # Optional: volume 0.0 to 1.0
 pygame.mixer.music.play(loops=-1)
 
