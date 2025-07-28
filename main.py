@@ -12,6 +12,12 @@ from classes.level_manager import LevelManager  # Import LevelManager
 
 # Initialize Pygame
 pygame.init()
+pygame.mixer.init()
+
+# Play Background Music
+pygame.mixer.music.load("assets/audios/background_music.wav")
+pygame.mixer.music.set_volume(0.5)  # Optional: volume 0.0 to 1.0
+pygame.mixer.music.play(loops=-1)
 
 # Create the game window
 screen = pygame.display.set_mode((SETTINGS["WIDTH"], SETTINGS["HEIGHT"]))
