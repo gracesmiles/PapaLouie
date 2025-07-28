@@ -2,19 +2,19 @@ import pygame
 from settings import SETTINGS, PLAYER_SETTINGS  # Import game and player settings
 from classes.platform import Platform
 
-# Transform Images
-# Make left and right
-right1Load = pygame.image.load("assets/images/playerLeft_walk1.png")
-right2Load = pygame.image.load("assets/images/playerLeft_walk2.png")
-right1 = pygame.transform.flip(right1Load, True, False)
-right2 = pygame.transform.flip(right2Load, True, False)
-pygame.image.save(right1, "assets/images/playerRight_walk1.png")
-pygame.image.save(right2, "assets/images/playerRight_walk2.png")
-jump_effect = pygame.mixer.Sound("assets/audios/jump.wav")    # Create sound effect of jump
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
+        # Transform Images
+        # Make left and right
+        right1Load = pygame.image.load("assets/images/playerLeft_walk1.png")
+        right2Load = pygame.image.load("assets/images/playerLeft_walk2.png")
+        right1 = pygame.transform.flip(right1Load, True, False)
+        right2 = pygame.transform.flip(right2Load, True, False)
+        pygame.image.save(right1, "assets/images/playerRight_walk1.png")
+        pygame.image.save(right2, "assets/images/playerRight_walk2.png")
+        
         # Make lists for walking left or right and scale
         self.walk_left = [
             pygame.transform.scale(pygame.image.load("assets/images/playerLeft_walk1.png"), (50, 80)),
@@ -25,6 +25,7 @@ class Player(pygame.sprite.Sprite):
             pygame.transform.scale(pygame.image.load("assets/images/playerRight_walk2.png"), (50, 80))
         ]
         self.image = self.walk_right[0]  # Starting image
+        self.jump_effect = pygame.mixer.Sound("assets/audios/jump.wav")
         self.rect = self.image.get_rect(topleft=(x, y))
         self.vel_y = 0  # Vertical velocity for jumping
         self.on_ground = False  # Track if player is on a surface
@@ -65,7 +66,7 @@ class Player(pygame.sprite.Sprite):
             self.vel_y = -PLAYER_SETTINGS["jump_power"]  # Jump if on ground
             self.on_ground = False  # Set to False so gravity applies again
             self.jump_pressed = True  # Mark that jump was pressed
-            jump_effect.play()    # Play sound effect of jump
+            self.jump_effect.play()
         
         # Reset jump_pressed when space is released
         if not keys[pygame.K_SPACE]:
