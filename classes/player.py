@@ -65,7 +65,7 @@ class Player(pygame.sprite.Sprite):
             self.vel_y = -PLAYER_SETTINGS["jump_power"]  # Jump if on ground
             self.on_ground = False  # Set to False so gravity applies again
             self.jump_pressed = True  # Mark that jump was pressed
-            sound_effect = pygame.mixer.Sound("jump.wav")    # Play sound effect
+            sound_effect = pygame.mixer.Sound("assets/audios/jump.wav")    # Play sound effect
         
         # Reset jump_pressed when space is released
         if not keys[pygame.K_SPACE]:
