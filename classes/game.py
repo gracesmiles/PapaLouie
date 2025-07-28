@@ -36,7 +36,6 @@ class Game:
     def collect_coin(self, amount=1):
         """Increases the player's coin count and plays sound"""
         self.score += amount
-        self.coin_effect.play()
 
     def lose_life(self):
         """Decreases the player's life and checks for game over."""
