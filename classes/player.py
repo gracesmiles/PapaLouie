@@ -57,8 +57,8 @@ class Player(pygame.sprite.Sprite):
             self.rect.left = 0
 
         # Righthand boundary value
-        if self.rect.right > SETTINGS["WIDTH"] + 400:  
-            self.rect.right = SETTINGS["WIDTH"] + 400
+        if self.rect.right > SETTINGS["WIDTH"] + 1000:  
+            self.rect.right = SETTINGS["WIDTH"] + 1000
 
         # Handle jumping - only jump once per key press
         if keys[pygame.K_SPACE] and self.on_ground and not self.jump_pressed:

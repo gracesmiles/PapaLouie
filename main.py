@@ -26,6 +26,14 @@ game = Game()
 ui = UI(screen)
 level_manager = LevelManager("level_1")
 
+# Pause menu state
+paused = False
+p_key_pressed = False  # Track if P key was pressed to prevent multiple toggles
+
+# Sundae smash state
+sundae_smash_available = False
+s_key_pressed = False  # Track if S key was pressed to prevent multiple activations
+
 # Create collectible group
 collectibles = pygame.sprite.Group()
 for _ in range(5):  # Spawn 5 random collectibles
@@ -35,7 +43,7 @@ for _ in range(5):  # Spawn 5 random collectibles
         collectibles.add(Coin(x, y))
 
 # Create Camera instance
-camera = Camera(SETTINGS["WIDTH"] + 400, SETTINGS["HEIGHT"])  # Extend world horizontally
+camera = Camera(SETTINGS["WIDTH"] + 1000, SETTINGS["HEIGHT"])  # Extend world horizontally to accommodate all level content
 
 # Game loop
 running = True
@@ -57,6 +65,46 @@ while running:
                 # Reset game state
                 level_manager = LevelManager("level_1")  # Restart at level 1
                 player.rect.topleft = (100, 500)
+                sundae_smash_available = False  # Reset sundae smash
+
+        # Handle pause menu toggle
+        if game.state == GAME_STATES["PLAYING"] and event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_p and not p_key_pressed:
+                paused = not paused
+                p_key_pressed = True
+            
+            # Handle sundae smash activation
+            if event.key == pygame.K_s and sundae_smash_available and not s_key_pressed:
+                # Kill all enemies in camera view
+                enemies_killed = False
+                for enemy in list(level_manager.enemies):
+                    if camera.camera.colliderect(enemy.rect):
+                        enemy.kill()
+                        enemies_killed = True
+                if enemies_killed:
+                    sundae_smash_available = False  # Use up the sundae smash
+                s_key_pressed = True
+        
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_p:
+                p_key_pressed = False
+            if event.key == pygame.K_s:
+                s_key_pressed = False
+
+        # Handle pause menu button clicks
+        if paused and event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = pygame.mouse.get_pos()
+            resume_rect, restart_rect = ui.get_pause_menu_buttons()
+            
+            if resume_rect.collidepoint(mouse_pos):
+                paused = False
+            elif restart_rect.collidepoint(mouse_pos):
+                # Restart the game
+                game.reset()
+                level_manager = LevelManager("level_1")
+                player.rect.topleft = (100, 500)
+                paused = False
+                sundae_smash_available = False  # Reset sundae smash
 
     screen.fill(SETTINGS["BG_COLOR"])  
     bg_x = -camera.camera.x  # Camera follows horizontally
@@ -67,51 +115,60 @@ while running:
         ui.draw_menu()
 
     elif game.state == GAME_STATES["PLAYING"]:
-        player.move(keys) 
-        player.apply_gravity(level_manager.platforms)  # Use platforms from LevelManager
+        if not paused:
+            player.move(keys) 
+            player.apply_gravity(level_manager.platforms)  # Use platforms from LevelManager
 
-        # Check if player fell off screen
-        if player.rect.top > SETTINGS["HEIGHT"]:
-            if game.lose_life():
-                pass
-            else:
-                player.rect.topleft = (100, 500)
-                player.vel_y = 0
-                player.on_ground = False
-
-        # Update camera to follow player and Update moving platforms
-        camera.update(player)
-        level_manager.platforms.update()  # Now we update the platforms using the Level Manager
-        level_manager.update_enemies()  # Update enemies with platform info
-  
-        # Detect collisions with collectibles (coins)
-        collected = pygame.sprite.spritecollide(player, level_manager.collectibles, True)
-        for item in collected:
-            game.collect_coin(item.points)
-
-        # Detect collisions with enemies
-        enemy_hit = pygame.sprite.spritecollide(player, level_manager.enemies, False)
-        if enemy_hit:
-            # Check if player is jumping on enemy (player's bottom is above enemy's top)
-            for enemy in enemy_hit:
-                if player.rect.bottom <= enemy.rect.top + 10 and player.vel_y > 0:
-                    # Player jumped on enemy - kill enemy
-                    enemy.kill()
-                    # Give player a small bounce
-                    player.vel_y = -8
+            # Check if player fell off screen
+            if player.rect.top > SETTINGS["HEIGHT"]:
+                if game.lose_life():
+                    pass
                 else:
-                    # Player hit enemy from side - lose life
-                    if game.lose_life():
-                        pass
+                    player.rect.topleft = (100, 500)
+                    player.vel_y = 0
+                    player.on_ground = False
+
+            # Update camera to follow player and Update moving platforms
+            camera.update(player)
+            level_manager.platforms.update()  # Now we update the platforms using the Level Manager
+            level_manager.update_enemies()  # Update enemies with platform info
+      
+            # Detect collisions with collectibles (coins)
+            collected = pygame.sprite.spritecollide(player, level_manager.collectibles, True)
+            for item in collected:
+                game.collect_coin(item.points)
+            
+            # Check if all coins are collected (8 coins total)
+            if len(level_manager.collectibles) == 0 and not sundae_smash_available:
+                sundae_smash_available = True
+
+            # Detect collisions with enemies
+            enemy_hit = pygame.sprite.spritecollide(player, level_manager.enemies, False)
+            if enemy_hit:
+                # Check if player is jumping on enemy (player's bottom is above enemy's top)
+                for enemy in enemy_hit:
+                    if player.rect.bottom <= enemy.rect.top + 10 and player.vel_y > 0:
+                        # Player jumped on enemy - kill enemy
+                        enemy.kill()
+                        # Give player a small bounce
+                        player.vel_y = -8
                     else:
-                        player.rect.topleft = (100, 500)
-                        player.vel_y = 0
-                        player.on_ground = False
+                        # Player hit enemy from side - lose life
+                        if game.lose_life():
+                            pass
+                        else:
+                            player.rect.topleft = (100, 500)
+                            player.vel_y = 0
+                            player.on_ground = False
 
         # Draw the player with camera offset and UI elements
         screen.blit(player.image, camera.apply(player))
         ui.draw_score(game.score)
         ui.draw_lives(game.lives)
+
+        # Draw sundae smash indicator if available
+        if sundae_smash_available:
+            ui.draw_sundae_smash_indicator()
 
         # Draw platforms with camera offset
         for platform in level_manager.platforms:
@@ -124,8 +181,8 @@ while running:
         for enemy in level_manager.enemies:
             screen.blit(enemy.image, camera.apply(enemy))
 
-        # Pause menu
-        if keys[pygame.K_p]:
+        # Draw pause menu if paused
+        if paused:
             ui.draw_pause_menu()
 
     elif game.state == GAME_STATES["GAME_OVER"]:

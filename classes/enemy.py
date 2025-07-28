@@ -40,7 +40,7 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.x = self.x
         
         # Check boundaries and reverse direction
-        if self.x <= self.start_x - 100 or self.x >= self.start_x + 100:
+        if self.x <= self.start_x - 50 or self.x >= self.start_x + 50:
             self.direction *= -1
 
     def take_damage(self):
