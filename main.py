@@ -6,7 +6,7 @@ from classes.platform import Platform # Import Platform from the platform class
 from classes.camera import Camera  # Import Camera
 from classes.game import Game  # Import Game Manager
 from classes.ui import UI # Import UI Elements
-from classes.collectible import Heart  # Import coin and bomb from collectible class
+from classes.collectible import Coin  # Import coin from collectible class
 from classes.level_manager import LevelManager  # Import LevelManager
 
 
@@ -32,7 +32,7 @@ for _ in range(5):  # Spawn 5 random collectibles
     x = random.randint(100, 700)
     y = random.randint(100, 500)
     if random.choice([True, False]):
-        collectibles.add(Heart(x, y))
+        collectibles.add(Coin(x, y))
 
 # Create Camera instance
 camera = Camera(SETTINGS["WIDTH"] + 400, SETTINGS["HEIGHT"])  # Extend world horizontally
@@ -70,18 +70,48 @@ while running:
         player.move(keys) 
         player.apply_gravity(level_manager.platforms)  # Use platforms from LevelManager
 
+        # Check if player fell off screen
+        if player.rect.top > SETTINGS["HEIGHT"]:
+            if game.lose_life():
+                pass
+            else:
+                player.rect.topleft = (100, 500)
+                player.vel_y = 0
+                player.on_ground = False
+
         # Update camera to follow player and Update moving platforms
         camera.update(player)
         level_manager.platforms.update()  # Now we update the platforms using the Level Manager
+        level_manager.update_enemies()  # Update enemies with platform info
   
-        # Detect collisions
+        # Detect collisions with collectibles (coins)
         collected = pygame.sprite.spritecollide(player, level_manager.collectibles, True)
         for item in collected:
-            game.increase_life(item.points)
+            game.collect_coin(item.points)
+
+        # Detect collisions with enemies
+        enemy_hit = pygame.sprite.spritecollide(player, level_manager.enemies, False)
+        if enemy_hit:
+            # Check if player is jumping on enemy (player's bottom is above enemy's top)
+            for enemy in enemy_hit:
+                if player.rect.bottom <= enemy.rect.top + 10 and player.vel_y > 0:
+                    # Player jumped on enemy - kill enemy
+                    enemy.kill()
+                    # Give player a small bounce
+                    player.vel_y = -8
+                else:
+                    # Player hit enemy from side - lose life
+                    if game.lose_life():
+                        pass
+                    else:
+                        player.rect.topleft = (100, 500)
+                        player.vel_y = 0
+                        player.on_ground = False
 
         # Draw the player with camera offset and UI elements
         screen.blit(player.image, camera.apply(player))
         ui.draw_score(game.score)
+        ui.draw_lives(game.lives)
 
         # Draw platforms with camera offset
         for platform in level_manager.platforms:
@@ -90,12 +120,16 @@ while running:
         for collectible in level_manager.collectibles:  # Apply camera movement to collectibles
             screen.blit(collectible.image, camera.apply(collectible))
 
-        # idk
+        # Draw enemies with camera offset
+        for enemy in level_manager.enemies:
+            screen.blit(enemy.image, camera.apply(enemy))
+
+        # Pause menu
         if keys[pygame.K_p]:
             ui.draw_pause_menu()
 
     elif game.state == GAME_STATES["GAME_OVER"]:
-        pass
+        ui.draw_game_over(game.score, game.lives > 0)
 
     pygame.display.flip()
 

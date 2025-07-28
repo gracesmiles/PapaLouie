@@ -32,6 +32,7 @@ class Player(pygame.sprite.Sprite):
         self.walk_index = 0
         self.animation_counter = 0
         self.facing_right = True
+        self.jump_pressed = False  # Track if jump key was pressed
 
     def move(self, keys):
         """Handles left, right movement and jumping."""
@@ -50,12 +51,6 @@ class Player(pygame.sprite.Sprite):
         length_list = 2
         if moving:
             self.animation_counter = (self.animation_counter + 1) % length_list
-        
-        """else:
-            if self.facing_right == True:
-                self.image = self.walk_right[0]
-            else:
-                self.image = self.walk_left[0]"""
 
         # Prevent player from moving beyond the left boundary
         if self.rect.left < 0:
@@ -65,9 +60,15 @@ class Player(pygame.sprite.Sprite):
         if self.rect.right > SETTINGS["WIDTH"] + 400:  
             self.rect.right = SETTINGS["WIDTH"] + 400
 
-        if keys[pygame.K_SPACE] and self.on_ground:
+        # Handle jumping - only jump once per key press
+        if keys[pygame.K_SPACE] and self.on_ground and not self.jump_pressed:
             self.vel_y = -PLAYER_SETTINGS["jump_power"]  # Jump if on ground
             self.on_ground = False  # Set to False so gravity applies again
+            self.jump_pressed = True  # Mark that jump was pressed
+        
+        # Reset jump_pressed when space is released
+        if not keys[pygame.K_SPACE]:
+            self.jump_pressed = False
     
     def apply_gravity(self, platforms):
         """Applies gravity to the player."""

@@ -3,10 +3,11 @@ from settings import GAME_STATES
 
 class Game:
     def __init__(self):
-        """Initializes the game state, score, and timer."""
+        """Initializes the game state, score, timer, and lives."""
         self.state = GAME_STATES["MENU"]  # Start in the menu
-        self.score = 0  # Player's score
+        self.score = 0  # Player's score (coins)
         self.start_time = None  # Track when the game starts
+        self.lives = 3  # Player's lives
 
     def set_state(self, new_state):
         """Changes the current game state."""
@@ -20,6 +21,7 @@ class Game:
         self.state = GAME_STATES["PLAYING"]
         self.score = 0
         self.start_time = pygame.time.get_ticks()
+        self.lives = 3
 
     # ✅ Add reset timer method
     def reset_timer(self):
@@ -27,14 +29,22 @@ class Game:
         self.start_time = pygame.time.get_ticks()
 
     def increase_score(self, amount=1):
-        """Increases the player's score."""
+        """Increases the player's score (coins)."""
         self.score += amount
 
-    def increase_life(self, amount=1):
-        """Increases the player's life"""
+    def collect_coin(self, amount=1):
+        """Increases the player's coin count."""
         self.score += amount
+
+    def lose_life(self):
+        """Decreases the player's life and checks for game over."""
+        self.lives -= 1
+        if self.lives <= 0:
+            self.state = GAME_STATES["GAME_OVER"]
+            return True  # Game over
+        return False  # Still alive
 
     def check_win_or_lose(self):
         """Checks if the game should end based on score or time."""
-        if self.score >= WIN_SCORE:
-            self.state = GAME_STATES["GAME_OVER"]  # Win condition
+        # Remove automatic win condition - let player play until they lose all lives
+        pass

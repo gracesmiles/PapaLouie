@@ -5,6 +5,8 @@ Handles switching between levels
 import pygame
 from settings import LEVELS
 from classes.platform import Platform
+from classes.collectible import Coin
+from classes.enemy import BasicEnemy, FastEnemy
 
 class LevelManager:
     def __init__(self, level_name):
@@ -12,6 +14,7 @@ class LevelManager:
         self.level_name = level_name
         self.platforms = pygame.sprite.Group()
         self.collectibles = pygame.sprite.Group()
+        self.enemies = pygame.sprite.Group()
         self.load_level()
 
     def load_level(self):
@@ -24,15 +27,28 @@ class LevelManager:
             self.platforms.add(platform)
 
         # Create collectibles
-        
         for item_data in level_data["collectibles"]:
             if item_data["type"] == "coin":
-                collectible = Heart(item_data["x"], item_data["y"])
+                collectible = Coin(item_data["x"], item_data["y"])
                 self.collectibles.add(collectible)
+        
+        # Create enemies
+        if "enemies" in level_data:
+            for enemy_data in level_data["enemies"]:
+                if enemy_data["type"] == "basic_enemy":
+                    enemy = BasicEnemy(enemy_data["x"], enemy_data["y"])
+                elif enemy_data["type"] == "fast_enemy":
+                    enemy = FastEnemy(enemy_data["x"], enemy_data["y"])
+                self.enemies.add(enemy)
             
-    def get_remaining_hearts(self):
-        #Returns a list of remaining hearts in the current level.
-        return [h for h in self.collectibles if isinstance(h, Heart)]
+    def get_remaining_coins(self):
+        """Returns a list of remaining coins in the current level."""
+        return [c for c in self.collectibles if isinstance(c, Coin)]
+
+    def update_enemies(self):
+        """Updates all enemies with platform information."""
+        for enemy in self.enemies:
+            enemy.update(self.platforms)
 
     def next_level(self):
         """Loads the next level if available."""
@@ -43,6 +59,7 @@ class LevelManager:
             self.level_name = level_keys[current_index + 1]
             self.platforms.empty()
             self.collectibles.empty()
+            self.enemies.empty()
             self.load_level()
             return True
         return False  # No next level available
