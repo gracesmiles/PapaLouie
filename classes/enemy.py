@@ -47,7 +47,6 @@ class Enemy(pygame.sprite.Sprite):
     def take_damage(self):
         """Reduces enemy health and checks if it's destroyed."""
         self.__health -= 1
-        self.enemy_damaged.play()    # Sound effect
         return self.__health <= 0  # Returns True if enemy should be removed
 
     def get_health(self):
