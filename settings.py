@@ -15,7 +15,7 @@ SETTINGS = {
 
 PLAYER_SETTINGS = {
     "speed": 2,         # How fast the player moves left/right (increased for responsiveness)
-    "jump_power": 12,   # How high the player jumps (reduced from 18)
+    "jump_power": 9,   # How high the player jumps (reduced from 18)
     "gravity": 0.2,     # Strength of gravity pulling the player down (reduced from 0.7)
 } 
 
