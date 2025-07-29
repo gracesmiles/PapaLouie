@@ -109,14 +109,8 @@ LEVELS = {
         ],
         "collectibles": [
             # 8 coins, one on each licorice platform
-            {"x": 250, "y": 370, "type": "coin"},
-            {"x": 450, "y": 270, "type": "coin"},
-            {"x": 650, "y": 320, "type": "coin"},
-            {"x": 850, "y": 170, "type": "coin"},
-            {"x": 1050, "y": 320, "type": "coin"},
-            {"x": 1250, "y": 220, "type": "coin"},
-            {"x": 1450, "y": 270, "type": "coin"},
-            {"x": 1650, "y": 170, "type": "coin"}
+            {"x": 250, "y": 370, "type": "coin"}
+
         ],
         "enemies": [
             {"x": 450, "y": 500, "type": "basic_enemy"},   # On ground platform (away from start)
@@ -149,3 +143,13 @@ LEVELS = {
     }
 }
 
+"""
+needed to do testing
+            {"x": 450, "y": 270, "type": "coin"},
+            {"x": 650, "y": 320, "type": "coin"},
+            {"x": 850, "y": 170, "type": "coin"},
+            {"x": 1050, "y": 320, "type": "coin"},
+            {"x": 1250, "y": 220, "type": "coin"},
+            {"x": 1450, "y": 270, "type": "coin"},
+            {"x": 1650, "y": 170, "type": "coin"}
+"""
