@@ -154,7 +154,7 @@ while running:
             # Detect collisions with enemies
             enemy_hit = pygame.sprite.spritecollide(player, level_manager.enemies, False)
             enemies_to_kill = []
-            MARGIN = 10
+            MARGIN = 25
             player.apply_gravity(level_manager.platforms)  # Use platforms from LevelManager
             
             if enemy_hit:
