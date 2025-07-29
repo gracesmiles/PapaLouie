@@ -151,11 +151,12 @@ while running:
                 sundae_smash_available = True
 
             # Detect collisions with enemies
+            player_mid_y = player.rect.bottom
             enemy_hit = pygame.sprite.spritecollide(player, level_manager.enemies, False)
             if enemy_hit:
                 # Check if player is jumping on enemy (player's bottom is above enemy's top)
                 for enemy in enemy_hit:
-                    if player.prev_rect.bottom + 10 <= enemy.rect.top and player.vel_y > 0:
+                    if player_mid_y < enemy_mid_y and player.vel_y > 0:
                         # Player jumped on enemy - kill enemy
                         enemy.kill()
                         # Give player a small bounce
