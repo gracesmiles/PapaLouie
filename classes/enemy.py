@@ -58,10 +58,10 @@ class Enemy(pygame.sprite.Sprite):
         return self.__health
 
     def kill(self):
+        """Kills the enemy with sound effect"""
         if not self.dying:
             self.dying = True
             self.enemy_damage.play()
-
 
     def update(self, platforms):
         if self.dying:
