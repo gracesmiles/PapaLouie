@@ -69,14 +69,14 @@ ENEMY_SETTINGS = {
     "fast_enemy": {
         "image": ["assets/images/sundaesaurus.webp"], 
         "speed": 0.4,
-        "health": 1
+        "health": 1,
         "width": 40,
         "height": 60
     },
     "homing_enemy": {
         "image": ["assets/images/cookie_happy.png", "assets/images/cookie_angry.png"], 
         "speed": 0.4,
-        "health": 2
+        "health": 2,
         "width": 50,
         "height": 50
     }
