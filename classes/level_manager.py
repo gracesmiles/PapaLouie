@@ -6,7 +6,7 @@ import pygame
 from settings import LEVELS
 from classes.platform import Platform
 from classes.collectible import Coin
-from classes.enemy import BasicEnemy, FastEnemy
+from classes.enemy import BasicEnemy, FastEnemy, HomingEnemy
 
 class LevelManager:
     def __init__(self, level_name):
