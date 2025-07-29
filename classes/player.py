@@ -34,6 +34,7 @@ class Player(pygame.sprite.Sprite):
         self.animation_counter = 0
         self.facing_right = True
         self.jump_pressed = False  # Track if jump key was pressed
+        self.prev_rect = self.rect.copy()    # See player's prev. position
 
     def move(self, keys):
         """Handles left, right movement and jumping."""
