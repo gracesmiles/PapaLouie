@@ -39,6 +39,8 @@ class LevelManager:
                     enemy = BasicEnemy(enemy_data["x"], enemy_data["y"])
                 elif enemy_data["type"] == "fast_enemy":
                     enemy = FastEnemy(enemy_data["x"], enemy_data["y"])
+                elif enemy_data["type"] == "homing_enemy":
+                    enemy = HomingEnemy(enemy_data["x"], enemy_data["y"], player)
                 self.enemies.add(enemy)
             
     def get_remaining_coins(self):
