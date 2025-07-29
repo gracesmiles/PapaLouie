@@ -2,7 +2,7 @@ import pygame
 from settings import GAME_STATES
 
 class Game:
-    def __init__(self, screen):
+    def __init__(self, screen=pygame.display.set_mode((SETTINGS["WIDTH"], SETTINGS["HEIGHT"]))):
         """Initializes the game state, score, timer, and lives."""
         self.state = GAME_STATES["MENU"]  # Start in the menu
         self.score = 0  # Player's score (coins)
