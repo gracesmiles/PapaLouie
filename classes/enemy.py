@@ -70,7 +70,7 @@ class Enemy(pygame.sprite.Sprite):
             if self.alpha <= 0:
                 super().kill()
             else:
-                self.image = self.original_image.copy()
+                self.image = pygame.transform.scale(self.original_image.copy(), (self.width, self.height))
                 self.image.set_alpha(self.alpha)
         else:
             """Called by sprite group to update the enemy."""
