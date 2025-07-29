@@ -85,9 +85,11 @@ class Player(pygame.sprite.Sprite):
         # Check for collision with platforms
         tolerance = 5
         for platform in platforms:
-            if (self.rect.bottom <= platform.rect.top + tolerance and 
-            self.rect.bottom >= platform.rect.top - tolerance and 
-            self.vel_y >= 0):
-                self.rect.bottom = platform.rect.top  # Snap player on top of platform
-                self.vel_y = 0  # Stop downward motion
-                self.on_ground = True  # Player is grounded
+            # Check horizontal overlap
+            if self.rect.right > platform.rect.left and self.rect.left < platform.rect.right:
+                if (self.rect.bottom <= platform.rect.top + tolerance and 
+                self.rect.bottom >= platform.rect.top - tolerance and 
+                self.vel_y >= 0):
+                    self.rect.bottom = platform.rect.top  # Snap player on top of platform
+                    self.vel_y = 0  # Stop downward motion
+                    self.on_ground = True  # Player is grounded
