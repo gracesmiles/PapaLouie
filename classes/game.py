@@ -38,9 +38,16 @@ class Game:
         self.coin_effect.play()
         self.score += amount
 
+    def draw_red_flash(self, duration=500, alpha=150):
+        self.overlay.set_alpha(alpha)
+        self.screen.blit(self.overlay, (0, 0))
+        pygame.display.update()
+        pygame.time.delay(duration)
+    
     def lose_life(self):
         """Decreases the player's life and checks for game over."""
         self.lives -= 1
+        self.draw_red_flash()
         if self.lives <= 0:
             self.state = GAME_STATES["GAME_OVER"]
             return True  # Game over
