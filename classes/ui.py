@@ -47,10 +47,10 @@ class UI:
 
         # Draw instructions
         #instructions_rect = pygame.Rect(275, 260, 250, 40)
-        instructions_txt1 = self.font.render("*Use left and right arrow keys to move", True, (255, 255, 255))
-        instructions_txt2 = self.font.render("*Use the space bar to jump", True, (255, 255, 255))
-        instructions_txt1_rect = instructions_txt1.get_rect(center=(400, 260))
-        instructions_txt2_rect = instructions_txt2.get_rect(center=(400, 300))
+        instructions_txt1 = self.font.render("Use left and right arrow keys to move", True, (255, 255, 255))
+        instructions_txt2 = self.font.render("Use the space bar to jump", True, (255, 255, 255))
+        instructions_txt1_rect = instructions_txt1.get_rect(center=(400, 270))
+        instructions_txt2_rect = instructions_txt2.get_rect(center=(400, 310))
         self.screen.blit(instructions_txt1, instructions_txt1_rect)
         self.screen.blit(instructions_txt2, instructions_txt2_rect)
     
