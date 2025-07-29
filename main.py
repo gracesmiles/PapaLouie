@@ -27,7 +27,7 @@ pygame.display.set_caption(SETTINGS["TITLE"])
 background = pygame.image.load(SETTINGS["BG_IMAGE"])
 
 # Create player instance and game objects
-player = Player(100, 500)  # Starting position
+player = Player(100, 200)  # Starting position
 game = Game()
 ui = UI(screen)
 level_manager = LevelManager("level_1")
