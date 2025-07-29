@@ -9,6 +9,8 @@ class Game:
         self.start_time = None  # Track when the game starts
         self.lives = 3  # Player's lives
         self.coin_effect = pygame.mixer.Sound("assets/audios/coin_collected.wav")
+        self.overlay = pygame.Surface(screen.get_size())
+        self.overlay.fill((255, 0, 0))  # Red overlay
 
     def set_state(self, new_state):
         """Changes the current game state."""
