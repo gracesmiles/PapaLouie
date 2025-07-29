@@ -153,17 +153,17 @@ while running:
 
             # Detect collisions with enemies
             enemy_hit = pygame.sprite.spritecollide(player, level_manager.enemies, False)
+            enemies_to_kill = []
+            
             if enemy_hit:
                 # Check if player is jumping on enemy (player's bottom is above enemy's top)
                 for enemy in enemy_hit:
                     player_bottom = player.rect.bottom
                     enemy_center_y = enemy.rect.centery
                     
-                    if player.prev_rect.bottom <= enemy.rect.top and player.vel_y > 0:
-                        # Player jumped on enemy - kill enemy
-                        enemy.kill()
-                        # Give player a small bounce
-                        player.vel_y = -8
+                    if player.prev_rect.bottom <= enemy.rect.top + 5 and player.vel_y > 0:
+                        enemies_to_kill.append(enemy)
+                        player.vel_y = -8    # Give player a small bounce
                     else:
                         # Player hit enemy from side - lose life
                         if game.lose_life():
@@ -172,6 +172,9 @@ while running:
                             player.rect.topleft = (spawn_x, spawn_y)
                             player.vel_y = 0
                             player.on_ground = False
+
+                for enemy in enemies_to_kill:
+                    enemy.kill() # Player jumped on enemy - kill enemy
 
         # Draw the player with camera offset and UI elements
         screen.blit(player.image, camera.apply(player))
