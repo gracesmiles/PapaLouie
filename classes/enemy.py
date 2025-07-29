@@ -21,7 +21,7 @@ class Enemy(pygame.sprite.Sprite):
         self.__health = health  # Encapsulated health attribute
         self.direction = 1  # 1 for right, -1 for left
         self.start_x = x  # Store starting position for boundary checking
-        self.original_image = pygame.image.load("assets/images/enemy.png").convert_alpha()
+        self.original_image = pygame.image.load("assets/images/sundaesaurus.webp").convert_alpha()
         self.enemy_damage = pygame.mixer.Sound("assets/audios/enemy_damage.wav")
         self.dying = False
         self.alpha = 255  # Fully visible
