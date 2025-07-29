@@ -85,6 +85,8 @@ while running:
             if event.key == pygame.K_s and sundae_smash_available and not s_key_pressed:
                 # Kill all enemies in camera view
                 enemies_killed = False
+                sundae_smash_effect = pygame.mixer.Sound("assets/audios/sundae_smash.wav")
+                sundae_smash_effect.play()
                 for enemy in list(level_manager.enemies):
                     if camera.camera.colliderect(enemy.rect):
                         enemy.kill()
