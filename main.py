@@ -96,7 +96,7 @@ while running:
                 s_key_pressed = True
                 # Move on to next level
                 if level_manager.next_level():
-                player.rect.topleft = (spawn_x, spawn_y)
+                    player.rect.topleft = (spawn_x, spawn_y)
         
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_p:
