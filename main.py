@@ -155,6 +155,7 @@ while running:
             enemy_hit = pygame.sprite.spritecollide(player, level_manager.enemies, False)
             enemies_to_kill = []
             MARGIN = 10
+            player.apply_gravity(level_manager.platforms)  # Use platforms from LevelManager
             
             if enemy_hit:
                 # Check if player is jumping on enemy (player's bottom is above enemy's top)
