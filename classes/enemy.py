@@ -15,8 +15,8 @@ class Enemy(pygame.sprite.Sprite):
         super().__init__()
         self.x = x
         self.y = y
-        self.width = 40
-        self.height = 60
+        self.width = settings["width"]
+        self.height = settings["height"]
         self.speed = settings["speed"]
         self.__health = settings["health"]  # Encapsulated health attribute
         self.direction = 1  # 1 for right, -1 for left
