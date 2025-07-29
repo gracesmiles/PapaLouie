@@ -14,7 +14,7 @@ class Enemy(pygame.sprite.Sprite):
         """
         super().__init__()
         self.x = x
-        self.y = y
+        self.y = y - 10
         self.width = 40
         self.height = 60
         self.speed = speed
