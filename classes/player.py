@@ -86,9 +86,10 @@ class Player(pygame.sprite.Sprite):
         
         # Check for collision with platforms
         tolerance = 5
+        margin = 40    # feet are more in than the L and R sides of png
         for platform in platforms:
             # Check horizontal overlap
-            if self.rect.right > platform.rect.left and self.rect.left < platform.rect.right:
+            if self.rect.right - margin > platform.rect.left and self.rect.left + margin < platform.rect.right:
                 if (self.rect.bottom <= platform.rect.top + tolerance and 
                 self.rect.bottom >= platform.rect.top - tolerance and 
                 self.vel_y >= 0):
