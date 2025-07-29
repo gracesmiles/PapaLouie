@@ -28,14 +28,14 @@ class Enemy(pygame.sprite.Sprite):
         
         # Load and scale the enemy image
         try:
-            self.image = pygame.image.load(settings["image"][0])
+            self.image = pygame.transform.scale(self.original_image, (self.width, self.height))
         except:
             # Fallback to a simple colored rectangle if image not found
             self.image = pygame.Surface((self.width, self.height))
             self.image.fill((255, 0, 0))  # Red rectangle
 
         # Scale the image once
-        self.image = pygame.transform.scale(self.original_image.copy(), (self.width, self.height))
+        # self.image = pygame.transform.scale(self.original_image.copy(), (self.width, self.height))
         
         self.rect = self.image.get_rect(topleft=(x, y))
 
