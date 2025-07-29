@@ -110,12 +110,6 @@ class UI:
         self.draw_text(f"Coins: {score}", 50, 40, (255, 215, 0), center=False)  # Coin text
         self.draw_text(f"Lives: {lives}", 50, 70, (200, 0, 0), center=False)  # Lives text
 
-    def draw_red_flash(self, duration=500, alpha=150):
-        self.overlay.set_alpha(alpha)
-        self.screen.blit(self.overlay, (0, 0))
-        pygame.display.update()
-        pygame.time.delay(duration)
-
     def get_pause_menu_buttons(self):
         """Returns the button rectangles for the pause menu without drawing."""
         resume_rect = pygame.Rect(300, 280, 200, 40)
