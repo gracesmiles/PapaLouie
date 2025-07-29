@@ -1,9 +1,9 @@
 import pygame
-from settings import SETTINGS
+from settings import SETTINGS, ENEMY_SETTINGS
 
 
 class Enemy(pygame.sprite.Sprite):
-    def __init__(self, x, y, speed, health):
+    def __init__(self, x, y, settings):
         """
         Base class for all enemy types.
 
@@ -17,18 +17,18 @@ class Enemy(pygame.sprite.Sprite):
         self.y = y
         self.width = 40
         self.height = 60
-        self.speed = speed
-        self.__health = health  # Encapsulated health attribute
+        self.speed = settings["speed"]
+        self.__health = settings["health"]  # Encapsulated health attribute
         self.direction = 1  # 1 for right, -1 for left
         self.start_x = x  # Store starting position for boundary checking
-        self.original_image = pygame.image.load("assets/images/sundaesaurus.webp").convert_alpha()
+        self.original_image = pygame.image.load(settings["image"][0]).convert_alpha()
         self.enemy_damage = pygame.mixer.Sound("assets/audios/enemy_damage.wav")
         self.dying = False
         self.alpha = 255  # Fully visible
         
         # Load and scale the enemy image
         try:
-            self.image = pygame.image.load("assets/images/sundaesaurus.webp")
+            self.image = pygame.image.load(settings["image"][0])
         except:
             # Fallback to a simple colored rectangle if image not found
             self.image = pygame.Surface((self.width, self.height))
@@ -82,19 +82,19 @@ class Enemy(pygame.sprite.Sprite):
 class BasicEnemy(Enemy):
     def __init__(self, x, y):
         """A basic enemy that moves back and forth on platforms."""
-        super().__init__(x, y, speed=.1, health=1)  # Reduced from 2
+        super().__init__(x, y, ENEMY_SETTINGS["basic_enemy"])
 
 
 class FastEnemy(Enemy):
     def __init__(self, x, y):
         """A fast-moving enemy with low health."""
-        super().__init__(x, y, speed=.5, health=1)  # Reduced from 4
+        super().__init__(x, y, ENEMY_SETTINGS["fast_enemy"])
 
 
 class StrongEnemy(Enemy):
     def __init__(self, x, y):
         """A slower but stronger enemy."""
-        super().__init__(x, y, speed=0.5, health=2)  # Reduced from 1
+        super().__init__(x, y, ENEMY_SETTINGS["homing_enemy"])
 
 
 class ZigZagEnemy(Enemy):
