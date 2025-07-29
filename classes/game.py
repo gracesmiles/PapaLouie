@@ -1,5 +1,5 @@
 import pygame
-from settings import GAME_STATES
+from settings import SETTINGS, GAME_STATES
 
 class Game:
     def __init__(self, screen=pygame.display.set_mode((SETTINGS["WIDTH"], SETTINGS["HEIGHT"]))):
