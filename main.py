@@ -165,7 +165,7 @@ while running:
                         if game.lose_life():
                             pass
                         else:
-                            player.rect.topleft = (100, 500)
+                            player.rect.topleft = (spawn_x, spawn_y)
                             player.vel_y = 0
                             player.on_ground = False
 
