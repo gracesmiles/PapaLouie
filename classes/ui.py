@@ -37,12 +37,12 @@ class UI:
         self.screen.blit(title_surface, title_rect)
         
         # Draw start button
-        start_rect = pygame.Rect(275, 320, 250, 40)
+        start_rect = pygame.Rect(275, 340, 250, 40)
         pygame.draw.rect(self.screen, (0, 128, 0), start_rect)  # Green button
         pygame.draw.rect(self.screen, (255, 255, 255), start_rect, 2)  # White border
         
         start_text = self.font.render("Press SPACE to Start", True, (255, 255, 255))
-        start_text_rect = start_text.get_rect(center=(400, 300))
+        start_text_rect = start_text.get_rect(center=(400, 360))
         self.screen.blit(start_text, start_text_rect)
 
         # Draw instructions
