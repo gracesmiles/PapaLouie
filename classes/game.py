@@ -12,7 +12,7 @@ class Game:
         self.screen = screen
         self.overlay = pygame.Surface(screen.get_size())
         self.overlay.fill((255, 0, 0))  # Red overlay
-        self.death_sound_effect = pygame.mixer("assets/audios/death.wav")
+        self.death_sound_effect = pygame.mixer.Sound("assets/audios/death.wav")
 
     def set_state(self, new_state):
         """Changes the current game state."""
