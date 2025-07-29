@@ -152,6 +152,7 @@ while running:
 
             # Detect collisions with enemies
             player_mid_y = player.rect.bottom
+            enemy_mid_y = enemy.rect.centery
             enemy_hit = pygame.sprite.spritecollide(player, level_manager.enemies, False)
             if enemy_hit:
                 # Check if player is jumping on enemy (player's bottom is above enemy's top)
