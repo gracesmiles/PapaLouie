@@ -22,7 +22,6 @@ class Enemy(pygame.sprite.Sprite):
         self.direction = 1  # 1 for right, -1 for left
         self.start_x = x  # Store starting position for boundary checking
         self.original_image = pygame.image.load("assets/images/sundaesaurus.webp").convert_alpha()
-        self.image = pygame.transform.scale(self.original_image.copy(), (self.width, self.height))
         self.enemy_damage = pygame.mixer.Sound("assets/audios/enemy_damage.wav")
         self.dying = False
         self.alpha = 255  # Fully visible
@@ -34,6 +33,9 @@ class Enemy(pygame.sprite.Sprite):
             # Fallback to a simple colored rectangle if image not found
             self.image = pygame.Surface((self.width, self.height))
             self.image.fill((255, 0, 0))  # Red rectangle
+
+        # Scale the image once
+        self.image = pygame.transform.scale(self.original_image.copy(), (self.width, self.height))
         
         self.rect = self.image.get_rect(topleft=(x, y))
 
