@@ -125,7 +125,7 @@ while running:
     elif game.state == GAME_STATES["PLAYING"]:
         if not paused:
             player.move(keys) 
-            player.apply_gravity(level_manager.platforms)  # Use platforms from LevelManager
+            # applied later? player.apply_gravity(level_manager.platforms)  # Use platforms from LevelManager
 
             # Check if player fell off screen
             if player.rect.top > SETTINGS["HEIGHT"]:
