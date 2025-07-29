@@ -22,6 +22,7 @@ class Enemy(pygame.sprite.Sprite):
         self.direction = 1  # 1 for right, -1 for left
         self.start_x = x  # Store starting position for boundary checking
         self.original_image = pygame.image.load("assets/images/sundaesaurus.webp").convert_alpha()
+        self.image = pygame.transform.scale(self.original_image.copy(), (self.width, self.height))
         self.enemy_damage = pygame.mixer.Sound("assets/audios/enemy_damage.wav")
         self.dying = False
         self.alpha = 255  # Fully visible
@@ -34,7 +35,6 @@ class Enemy(pygame.sprite.Sprite):
             self.image = pygame.Surface((self.width, self.height))
             self.image.fill((255, 0, 0))  # Red rectangle
         
-        self.image = pygame.transform.scale(self.image, (self.width, self.height))
         self.rect = self.image.get_rect(topleft=(x, y))
 
     def move(self, platforms):
@@ -50,18 +50,11 @@ class Enemy(pygame.sprite.Sprite):
     def take_damage(self):
         """Reduces enemy health and checks if it's destroyed."""
         self.__health -= 1
-        self.enemy_damaged.play()
         return self.__health <= 0  # Returns True if enemy should be removed
 
     def get_health(self):
         """Returns the enemy's current health."""
         return self.__health
-
-    def kill(self):
-        """Kills the enemy with sound effect"""
-        if not self.dying:
-            self.dying = True
-            self.enemy_damage.play()
 
     def fade(self):
         """Starts the dying process with fade out and sound"""
