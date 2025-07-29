@@ -70,7 +70,7 @@ while running:
 
                 # Reset game state
                 level_manager = LevelManager("level_1")  # Restart at level 1
-                player.rect.topleft = (100, 500)
+                player.rect.topleft = (100, 200)
                 sundae_smash_available = False  # Reset sundae smash
 
         # Handle pause menu toggle
