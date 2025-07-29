@@ -27,7 +27,9 @@ pygame.display.set_caption(SETTINGS["TITLE"])
 background = pygame.image.load(SETTINGS["BG_IMAGE"])
 
 # Create player instance and game objects
-player = Player(100, 200)  # Starting position
+spawn_x = 100
+spawn_y = 200
+player = Player(spawn_x, spawn_y)  # Starting position
 game = Game()
 ui = UI(screen)
 level_manager = LevelManager("level_1")
@@ -108,7 +110,7 @@ while running:
                 # Restart the game
                 game.reset()
                 level_manager = LevelManager("level_1")
-                player.rect.topleft = (100, 500)
+                player.rect.topleft = (spawn_x, spawn_y)
                 paused = False
                 sundae_smash_available = False  # Reset sundae smash
 
@@ -130,7 +132,7 @@ while running:
                 if game.lose_life():
                     pass
                 else:
-                    player.rect.topleft = (100, 500)
+                    player.rect.topleft = (spawn_x, spawn_y)
                     player.vel_y = 0
                     player.on_ground = False
 
