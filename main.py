@@ -151,6 +151,7 @@ while running:
                 sundae_smash_available = True
 
             # Detect collisions with enemies
+            player.apply_gravity(level_manager.platforms)
             enemy_hit = pygame.sprite.spritecollide(player, level_manager.enemies, False)
             if enemy_hit:
                 # Check if player is jumping on enemy (player's bottom is above enemy's top)
