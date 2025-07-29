@@ -21,7 +21,7 @@ class Enemy(pygame.sprite.Sprite):
         self.__health = health  # Encapsulated health attribute
         self.direction = 1  # 1 for right, -1 for left
         self.start_x = x  # Store starting position for boundary checking
-        self.enemey_damage = pygame.mixer.Sound("assets/audios/enemy_damage.wav")
+        self.enemy_damage = pygame.mixer.Sound("assets/audios/enemy_damage.wav")
         
         # Load and scale the enemy image
         try:
