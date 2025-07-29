@@ -163,6 +163,7 @@ while running:
                     enemy_center_y = enemy.rect.centery
                     
                     if player.rect.bottom <= enemy.rect.top + MARGIN and player.vel_y > 0:
+                        enemy.fade()
                         enemies_to_kill.append(enemy)
                         player.vel_y = -8    # player bounces
                     else:
