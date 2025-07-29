@@ -12,6 +12,7 @@ class Game:
         self.screen = screen
         self.overlay = pygame.Surface(screen.get_size())
         self.overlay.fill((255, 0, 0))  # Red overlay
+        self.death_sound_effect = pygame.mixer("assets/audios/death.wav")
 
     def set_state(self, new_state):
         """Changes the current game state."""
@@ -44,6 +45,7 @@ class Game:
     def draw_red_flash(self, duration=500, alpha=150):
         self.overlay.set_alpha(alpha)
         self.screen.blit(self.overlay, (0, 0))
+        self.death_sound_effect.play()
         pygame.display.update()
         pygame.time.delay(duration)
     
