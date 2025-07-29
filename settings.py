@@ -132,6 +132,13 @@ LEVELS = {
             {"x": 320, "y": 370, "type": "coin"},
             {"x": 520, "y": 270, "type": "coin"},
             {"x": 720, "y": 170, "type": "coin"}
+        ],
+        "enemies": [
+            {"x": 300, "y": 390, "type": "fast_enemy"},   # On licorice platform
+            {"x": 850, "y": 500, "type": "fast_enemy"},    # On ground platform
+            {"x": 1050, "y": 500, "type": "basic_enemy"},  # On ground platform
+            {"x": 1450, "y": 500, "type": "fast_enemy"},   # On ground platform
+            {"x": 1650, "y": 500, "type": "basic_enemy"}   # On ground platform
         ]
     }
 }
