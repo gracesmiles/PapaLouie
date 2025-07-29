@@ -60,12 +60,17 @@ COLLECTIBLES = {
 
 ENEMY_SETTINGS = {
     "basic_enemy": {
-        "image": "assets/images/enemy.png",
+        "image": ["assets/images/sundaesaurus.webp"],
         "speed": 2,
         "health": 1
     },
     "fast_enemy": {
-        "image": "assets/images/enemy.png", 
+        "image": ["assets/images/sundaesaurus.webp"], 
+        "speed": 4,
+        "health": 1
+    },
+    "homing_enemy": {
+        "image": ["assets/images/cookie_happy.png", "assets/images/cookie_angry.png"], 
         "speed": 4,
         "health": 1
     }
