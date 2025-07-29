@@ -94,7 +94,7 @@ class FastEnemy(Enemy):
 class StrongEnemy(Enemy):
     def __init__(self, x, y):
         """A slower but stronger enemy."""
-        super().__init__(x, y, ENEMY_SETTINGS["homing_enemy"])
+        super().__init__(x, y)
 
 
 class ZigZagEnemy(Enemy):
@@ -114,7 +114,7 @@ class ZigZagEnemy(Enemy):
 class HomingEnemy(Enemy):
     def __init__(self, x, y, player):
         """An enemy that follows the player's position."""
-        super().__init__(x, y, speed=1, health=1)  # Reduced from 2
+        super().__init__(x, y, ENEMY_SETTINGS["homing_enemy"])  # Reduced from 2
         self.player = player  # Reference to the player
 
     def move(self, platforms):
