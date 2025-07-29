@@ -35,7 +35,7 @@ class Player(pygame.sprite.Sprite):
         self.facing_right = True
         self.jump_pressed = False  # Track if jump key was pressed
         self.prev_rect = self.rect.copy()    # See player's prev. position
-
+    
     def move(self, keys):
         """Handles left, right movement and jumping."""
         moving = False
@@ -75,6 +75,7 @@ class Player(pygame.sprite.Sprite):
     
     def apply_gravity(self, platforms):
         """Applies gravity to the player."""
+        self.prev_rect = self.rect.copy()
         self.vel_y += PLAYER_SETTINGS["gravity"]
         self.rect.y += self.vel_y
         
