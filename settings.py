@@ -14,7 +14,7 @@ SETTINGS = {
 }
 
 PLAYER_SETTINGS = {
-    "speed": 2,         # How fast the player moves left/right (increased for responsiveness)
+    "speed": 1.5,         # How fast the player moves left/right (increased for responsiveness)
     "jump_power": 10,   # How high the player jumps (reduced from 18)
     "gravity": 0.3,     # Strength of gravity pulling the player down (reduced from 0.7)
 } 
@@ -66,12 +66,12 @@ ENEMY_SETTINGS = {
     },
     "fast_enemy": {
         "image": ["assets/images/sundaesaurus.webp"], 
-        "speed": 0.5,
+        "speed": 0.4,
         "health": 1
     },
     "homing_enemy": {
         "image": ["assets/images/cookie_happy.png", "assets/images/cookie_angry.png"], 
-        "speed": 0.5,
+        "speed": 0.4,
         "health": 2
     }
 }
