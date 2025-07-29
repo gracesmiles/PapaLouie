@@ -21,7 +21,10 @@ class Enemy(pygame.sprite.Sprite):
         self.__health = health  # Encapsulated health attribute
         self.direction = 1  # 1 for right, -1 for left
         self.start_x = x  # Store starting position for boundary checking
+        self.original_image = pygame.image.load("assets/images/enemy.png").convert_alpha()
         self.enemy_damage = pygame.mixer.Sound("assets/audios/enemy_damage.wav")
+        self.dying = False
+        self.alpha = 255  # Fully visible
         
         # Load and scale the enemy image
         try:
@@ -55,8 +58,22 @@ class Enemy(pygame.sprite.Sprite):
         return self.__health
 
     def kill(self):
-        self.enemy_damage.play()    # Play sound        
-        super().kill()    # Actually remove from groups
+        if not self.dying:
+            self.dying = True
+            self.death_sound.play()
+
+    def update(self):
+        if self.dying:
+            self.alpha -= 10  # Fade out speed (10 per frame)
+            if self.alpha <= 0:
+                super().kill()
+            else:
+                # Update transparency
+                self.image = self.original_image.copy()
+                self.image.set_alpha(self.alpha)
+        else:
+            # Normal enemy behavior
+            pass
 
     def update(self, platforms):
         """Called by sprite group to update the enemy."""
