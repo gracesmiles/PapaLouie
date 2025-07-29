@@ -37,20 +37,20 @@ class UI:
         self.screen.blit(title_surface, title_rect)
         
         # Draw start button
-        start_rect = pygame.Rect(275, 340, 250, 40)
+        start_rect = pygame.Rect(275, 360, 250, 40)
         pygame.draw.rect(self.screen, (0, 128, 0), start_rect)  # Green button
         pygame.draw.rect(self.screen, (255, 255, 255), start_rect, 2)  # White border
         
         start_text = self.font.render("Press SPACE to Start", True, (255, 255, 255))
-        start_text_rect = start_text.get_rect(center=(400, 360))
+        start_text_rect = start_text.get_rect(center=(400, 380))
         self.screen.blit(start_text, start_text_rect)
 
         # Draw instructions
-        instructions_rect = pygame.Rect(275, 260, 250, 40)
+        #instructions_rect = pygame.Rect(275, 260, 250, 40)
         instructions_txt1 = self.font.render("*Use left and right arrow keys to move", True, (255, 255, 255))
         instructions_txt2 = self.font.render("*Use the space bar to jump", True, (255, 255, 255))
-        instructions_txt1_rect = start_text.get_rect(center=(400, 300))
-        instructions_txt2_rect = start_text.get_rect(center=(400, 300))
+        instructions_txt1_rect = instructions_txt1.get_rect(center=(400, 260))
+        instructions_txt2_rect = instructions_txt2.get_rect(center=(400, 300))
         self.screen.blit(instructions_txt1, instructions_txt1_rect)
         self.screen.blit(instructions_txt2, instructions_txt2_rect)
     
