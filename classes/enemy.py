@@ -64,7 +64,7 @@ class Enemy(pygame.sprite.Sprite):
             self.enemy_damage.play()
 
     def fade(self):
-    """Starts the dying process with fade out and sound"""
+        """Starts the dying process with fade out and sound"""
         if not self.dying:
             self.dying = True
             self.enemy_damage.play()
