@@ -60,7 +60,7 @@ class Enemy(pygame.sprite.Sprite):
     def kill(self):
         if not self.dying:
             self.dying = True
-            self.death_sound.play()
+            self.enemy_damage.play()
 
     def update(self):
         if self.dying:
