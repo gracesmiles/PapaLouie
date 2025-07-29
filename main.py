@@ -162,7 +162,7 @@ while running:
                     player_bottom = player.rect.bottom
                     enemy_center_y = enemy.rect.centery
                     
-                    if player.prev_rect.bottom <= enemy.rect.top + MARGIN and player.vel_y > 0:
+                    if player.prev_rect.bottom <= enemy.rect.top and player.rect.bottom >= enemy.rect.top and player.vel_y > 0:
                         enemies_to_kill.append(enemy)
                         player.vel_y = -8    # player bounces
                     else:
