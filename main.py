@@ -157,6 +157,9 @@ while running:
             if enemy_hit:
                 # Check if player is jumping on enemy (player's bottom is above enemy's top)
                 for enemy in enemy_hit:
+                    player_bottom = player.rect.bottom
+                    enemy_center_y = enemy.rect.centery
+                    
                     if player_mid_y < enemy_mid_y and player.vel_y > 0:
                         # Player jumped on enemy - kill enemy
                         enemy.kill()
