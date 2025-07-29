@@ -73,7 +73,7 @@ class Enemy(pygame.sprite.Sprite):
         if self.dying:
             """Sundae monster fades out"""
             self.alpha -= 10
-            if self.alpha <= 0:
+            if self.alpha <= 5:
                 super().kill()
             else:
                 self.image = pygame.transform.scale(self.original_image.copy(), (self.width, self.height))
