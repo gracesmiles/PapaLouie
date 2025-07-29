@@ -2,13 +2,14 @@ import pygame
 from settings import GAME_STATES
 
 class Game:
-    def __init__(self):
+    def __init__(self, screen):
         """Initializes the game state, score, timer, and lives."""
         self.state = GAME_STATES["MENU"]  # Start in the menu
         self.score = 0  # Player's score (coins)
         self.start_time = None  # Track when the game starts
         self.lives = 3  # Player's lives
         self.coin_effect = pygame.mixer.Sound("assets/audios/coin_collected.wav")
+        self.screen = screen
         self.overlay = pygame.Surface(screen.get_size())
         self.overlay.fill((255, 0, 0))  # Red overlay
 
