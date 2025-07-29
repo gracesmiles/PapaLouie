@@ -54,6 +54,10 @@ class Enemy(pygame.sprite.Sprite):
         """Returns the enemy's current health."""
         return self.__health
 
+    def kill(self):
+        self.enemy_damage.play()    # Play sound        
+        super().kill()    # Actually remove from groups
+
     def update(self, platforms):
         """Called by sprite group to update the enemy."""
         self.move(platforms)
