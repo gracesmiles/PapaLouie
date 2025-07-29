@@ -158,7 +158,7 @@ while running:
                     player_bottom = player.rect.bottom
                     enemy_center_y = enemy.rect.centery
                     
-                    if player_bottom < enemy_center_y and player.vel_y > 0:
+                    if player.prev_rect.bottom <= enemy.rect.top and player.vel_y > 0:
                         # Player jumped on enemy - kill enemy
                         enemy.kill()
                         # Give player a small bounce
