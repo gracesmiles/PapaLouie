@@ -9,7 +9,7 @@ SETTINGS = {
     "HEIGHT": 600,      # Game window height
     "FPS": 60,          # Frames per second
     "BG_COLOR": (135, 206, 235),  # Light blue background
-    "TITLE": "Simple Platformer",  # Window title
+    "TITLE": "Papa Louie Returns",  # Window title
     "BG_IMAGE": "assets/images/background.jpg"
 }
 
