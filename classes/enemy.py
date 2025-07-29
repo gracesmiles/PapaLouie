@@ -62,22 +62,19 @@ class Enemy(pygame.sprite.Sprite):
             self.dying = True
             self.enemy_damage.play()
 
-    def update(self):
+
+    def update(self, platforms):
         if self.dying:
-            self.alpha -= 10  # Fade out speed (10 per frame)
+            """Sundae monster fades out"""
+            self.alpha -= 10
             if self.alpha <= 0:
                 super().kill()
             else:
-                # Update transparency
                 self.image = self.original_image.copy()
                 self.image.set_alpha(self.alpha)
         else:
-            # Normal enemy behavior
-            pass
-
-    def update(self, platforms):
-        """Called by sprite group to update the enemy."""
-        self.move(platforms)
+            """Called by sprite group to update the enemy."""
+            self.move(platforms)
 
 
 # Enemy Subclasses with Polymorphic Movement
