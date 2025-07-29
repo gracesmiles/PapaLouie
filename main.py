@@ -155,7 +155,7 @@ while running:
             if enemy_hit:
                 # Check if player is jumping on enemy (player's bottom is above enemy's top)
                 for enemy in enemy_hit:
-                    if player.prev_rect.bottom <= enemy.rect.top and player.vel_y > 0:
+                    if player.prev_rect.bottom + 10 <= enemy.rect.top and player.vel_y > 0:
                         # Player jumped on enemy - kill enemy
                         enemy.kill()
                         # Give player a small bounce
