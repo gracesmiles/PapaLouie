@@ -32,7 +32,7 @@ spawn_y = 200
 player = Player(spawn_x, spawn_y)  # Starting position
 game = Game()
 ui = UI(screen)
-level_manager = LevelManager("level_1")
+level_manager = LevelManager("level_1", player)
 
 # Pause menu state
 paused = False
