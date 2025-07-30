@@ -125,6 +125,13 @@ class HomingEnemy(Enemy):
             self.x -= self.speed
         self.rect.x = self.x
 
+        """Moves toward the player's y position."""
+        if self.player.rect.y > self.y:
+            self.y += self.speed
+        elif self.player.rect.y < self.y:
+            self.y -= self.speed
+        self.rect.y = self.y
+
 
 class RushEnemy(Enemy):
     def __init__(self, x, y):
