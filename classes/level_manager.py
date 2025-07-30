@@ -9,13 +9,14 @@ from classes.collectible import Coin
 from classes.enemy import BasicEnemy, FastEnemy, HomingEnemy
 
 class LevelManager:
-    def __init__(self, level_name):
+    def __init__(self, level_name, player):
         """Initialize the level manager and load the first level."""
         self.level_name = level_name
         self.platforms = pygame.sprite.Group()
         self.collectibles = pygame.sprite.Group()
         self.enemies = pygame.sprite.Group()
         self.load_level()
+        self.player = player
 
     def load_level(self):
         """Loads level data from LEVELS dictionary and creates objects."""
@@ -40,7 +41,7 @@ class LevelManager:
                 elif enemy_data["type"] == "fast_enemy":
                     enemy = FastEnemy(enemy_data["x"], enemy_data["y"])
                 elif enemy_data["type"] == "homing_enemy":
-                    enemy = HomingEnemy(enemy_data["x"], enemy_data["y"], player)
+                    enemy = HomingEnemy(enemy_data["x"], enemy_data["y"], self.player)
                 self.enemies.add(enemy)
             
     def get_remaining_coins(self):
