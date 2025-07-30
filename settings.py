@@ -75,10 +75,10 @@ ENEMY_SETTINGS = {
     },
     "homing_enemy": {
         "image": ["assets/images/cookie_happy.png", "assets/images/cookie_angry.png"], 
-        "speed": 0.5,
+        "speed": 0.2,
         "health": 2,
-        "width": 50,
-        "height": 50
+        "width": 40,
+        "height": 40
     }
 }
 
@@ -135,8 +135,8 @@ LEVELS = {
         ],
         "enemies": [
             {"x": 350, "y": 350, "type": "fast_enemy"},   # On licorice platform
-            {"x": 850, "y": 500, "type": "homing_enemy"},    # On ground platform
-            {"x": 1050, "y": 500, "type": "homing_enemy"},  # On ground platform
+            {"x": 850, "y": 200, "type": "homing_enemy"},    # On ground platform
+            {"x": 1050, "y": 5, "type": "homing_enemy"},  # On ground platform
             {"x": 1450, "y": 500, "type": "fast_enemy"},   # On licorice platform
             {"x": 1650, "y": 500, "type": "homing_enemy"}   # On ground platform
         ]
