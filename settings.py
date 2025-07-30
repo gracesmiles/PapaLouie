@@ -74,14 +74,14 @@ ENEMY_SETTINGS = {
     },
     "fast_enemy": {
         "image": ["assets/images/sundaesaurus.webp"], 
-        "speed": 0.4,
+        "speed": 0.5,
         "health": 1,
         "width": 40,
         "height": 60
     },
     "homing_enemy": {
         "image": ["assets/images/cookie_happy.png", "assets/images/cookie_angry.png"], 
-        "speed": .5,
+        "speed": .6,
         "health": 2,
         "width": 40,
         "height": 40
@@ -163,7 +163,7 @@ LEVELS = {
             {"x": 750, "y": 170, "type": "coin"}
         ],
         "enemies": [
-            {"x": 350, "y": 370, "type": "fast_enemy"},   # On licorice platform
+            {"x": 350, "y": 340, "type": "fast_enemy"},   # On licorice platform
             {"x": 850, "y": 500, "type": "homing_enemy"},    # On ground platform
             {"x": 1050, "y": 500, "type": "homing_enemy"},  # On ground platform
             {"x": 1450, "y": 500, "type": "fast_enemy"},   # On ground platform
