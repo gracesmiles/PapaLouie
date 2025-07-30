@@ -16,44 +16,45 @@ from classes.level_manager import LevelManager  # Import LevelManager
 pygame.init()
 pygame.mixer.init()
 
-# Play Background Music
-pygame.mixer.music.load("assets/audios/background_music.mp3")
-pygame.mixer.music.set_volume(0.5)  # Optional: volume 0.0 to 1.0
-pygame.mixer.music.play(loops=-1)
-
-# Create the game window
-screen = pygame.display.set_mode((SETTINGS["WIDTH"], SETTINGS["HEIGHT"]))
-pygame.display.set_caption(SETTINGS["TITLE"])
-
-# Load the background image
-background = pygame.image.load(SETTINGS["BG_IMAGE"])
-
-# Create player instance and game objects
-spawn_x = 100
-spawn_y = 200
-player = Player(spawn_x, spawn_y)  # Starting position
-game = Game()
-ui = UI(screen)
-level_manager = LevelManager("level_1", player)
-
-# Pause menu state
-paused = False
-p_key_pressed = False  # Track if P key was pressed to prevent multiple toggles
-
-# Sundae smash state
-sundae_smash_available = False
-s_key_pressed = False  # Track if S key was pressed to prevent multiple activations
-
-# Create collectible group
-collectibles = pygame.sprite.Group()
-for _ in range(5):  # Spawn 5 random collectibles
-    x = random.randint(100, 700)
-    y = random.randint(100, 500)
-    if random.choice([True, False]):
-        collectibles.add(Coin(x, y))
-
-# Create Camera instance
-camera = Camera(SETTINGS["WIDTH"] + 1000, SETTINGS["HEIGHT"])  # Extend world horizontally to accommodate all level content
+class Game:
+    # Play Background Music
+    pygame.mixer.music.load("assets/audios/background_music.mp3")
+    pygame.mixer.music.set_volume(0.5)  # Optional: volume 0.0 to 1.0
+    pygame.mixer.music.play(loops=-1)
+    
+    # Create the game window
+    screen = pygame.display.set_mode((SETTINGS["WIDTH"], SETTINGS["HEIGHT"]))
+    pygame.display.set_caption(SETTINGS["TITLE"])
+    
+    # Load the background image
+    background = pygame.image.load(SETTINGS["BG_IMAGE"])
+    
+    # Create player instance and game objects
+    spawn_x = 100
+    spawn_y = 200
+    player = Player(spawn_x, spawn_y)  # Starting position
+    game = Game()
+    ui = UI(screen)
+    level_manager = LevelManager("level_1", player)
+    
+    # Pause menu state
+    paused = False
+    p_key_pressed = False  # Track if P key was pressed to prevent multiple toggles
+    
+    # Sundae smash state
+    sundae_smash_available = False
+    s_key_pressed = False  # Track if S key was pressed to prevent multiple activations
+    
+    # Create collectible group
+    collectibles = pygame.sprite.Group()
+    for _ in range(5):  # Spawn 5 random collectibles
+        x = random.randint(100, 700)
+        y = random.randint(100, 500)
+        if random.choice([True, False]):
+            collectibles.add(Coin(x, y))
+    
+    # Create Camera instance
+    camera = Camera(SETTINGS["WIDTH"] + 1000, SETTINGS["HEIGHT"])  # Extend world horizontally to accommodate all level content
 
 # Game loop
 async def run(self):
