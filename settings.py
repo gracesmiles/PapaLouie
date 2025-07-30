@@ -75,7 +75,7 @@ ENEMY_SETTINGS = {
     },
     "homing_enemy": {
         "image": ["assets/images/cookie_happy.png", "assets/images/cookie_angry.png"], 
-        "speed": 0.2,
+        "speed": 0.05,
         "health": 2,
         "width": 40,
         "height": 40
