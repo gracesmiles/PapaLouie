@@ -75,6 +75,15 @@ while running:
                 player.rect.topleft = (100, 200)
                 sundae_smash_available = False  # Reset sundae smash
 
+        if game.state == GAME_STATES["WIN"] and event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:
+                game.reset()
+
+                # Reset game state
+                level_manager = LevelManager("level_1", player)  # Restart at level 1
+                player.rect.topleft = (100, 200)
+                sundae_smash_available = False  # Reset sundae smash
+        
         # Handle pause menu toggle
         if game.state == GAME_STATES["PLAYING"] and event.type == pygame.KEYDOWN:
             if event.key == pygame.K_p and not p_key_pressed:
@@ -183,6 +192,11 @@ while running:
                 for enemy in enemies_to_kill:
                     enemy.kill() # Player jumped on enemy - kill enemy
 
+            sundae_collision = pygame.sprite.spritecollide(player, level_manager.platforms, False)
+            for platform in sundae_collision:
+                if platform.type == "sundae":
+                    game.win_game()
+                    break
         # Draw the player with camera offset and UI elements
         screen.blit(player.image, camera.apply(player))
         ui.draw_score(game.score)
@@ -209,6 +223,9 @@ while running:
 
     elif game.state == GAME_STATES["GAME_OVER"]:
         ui.draw_game_over(game.score, game.lives > 0)
+
+    elif game.state == GAME_STATES["WIN"]:
+        ui.draw_win_screen(game.score)
 
     pygame.display.flip()
 

@@ -2,6 +2,7 @@ import pygame
 from settings import SETTINGS, PLAYER_SETTINGS  # Import game and player settings
 from classes.platform import Platform
 
+clock = pygame.time.Clock()
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
@@ -38,14 +39,15 @@ class Player(pygame.sprite.Sprite):
     
     def move(self, keys):
         """Handles left, right movement and jumping."""
+        dt = clock.tick(60)
         moving = False
         if keys[pygame.K_LEFT]:
-            self.rect.x -= PLAYER_SETTINGS["speed"]
+            self.rect.x -= PLAYER_SETTINGS["speed"] * dt
             self.facing_right = False
             moving = True
             self.image = self.walk_left[self.animation_counter]
         if keys[pygame.K_RIGHT]:
-            self.rect.x += PLAYER_SETTINGS["speed"]
+            self.rect.x += PLAYER_SETTINGS["speed"] * dt
             self.facing_right = True
             moving = True
             self.image = self.walk_right[self.animation_counter]

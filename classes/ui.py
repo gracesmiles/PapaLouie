@@ -26,31 +26,35 @@ class UI:
         overlay.fill((0, 0, 0))
         self.screen.blit(overlay, (0, 0))
         
-        # Draw menu background
-        menu_rect = pygame.Rect(200, 150, 400, 300)
+        # Draw menu background - made larger to accommodate more text
+        menu_rect = pygame.Rect(150, 120, 500, 360)
         pygame.draw.rect(self.screen, (50, 50, 50), menu_rect)  # Dark gray background
         pygame.draw.rect(self.screen, (100, 100, 100), menu_rect, 3)  # Border
         
         # Draw title
-        title_surface = self.large_font.render("PAPA LOUIE", True, (255, 215, 0))  # Gold color
-        title_rect = title_surface.get_rect(center=(400, 200))
+        title_surface = self.large_font.render("PAPA LOUIE RETURNS", True, (255, 215, 0))  # Gold color
+        title_rect = title_surface.get_rect(center=(400, 160))
         self.screen.blit(title_surface, title_rect)
         
+        # Draw mission statement
+        mission_surface = self.font.render("Help Papa Louie save his precious sundae!", True, (255, 255, 255))
+        mission_rect = mission_surface.get_rect(center=(400, 200))
+        self.screen.blit(mission_surface, mission_rect)
+        
         # Draw start button
-        start_rect = pygame.Rect(275, 360, 250, 40)
+        start_rect = pygame.Rect(275, 380, 250, 40)
         pygame.draw.rect(self.screen, (0, 128, 0), start_rect)  # Green button
         pygame.draw.rect(self.screen, (255, 255, 255), start_rect, 2)  # White border
         
         start_text = self.font.render("Press SPACE to Start", True, (255, 255, 255))
-        start_text_rect = start_text.get_rect(center=(400, 380))
+        start_text_rect = start_text.get_rect(center=(400, 400))
         self.screen.blit(start_text, start_text_rect)
 
         # Draw instructions
-        #instructions_rect = pygame.Rect(275, 260, 250, 40)
         instructions_txt1 = self.font.render("Use left and right arrow keys to move", True, (255, 255, 255))
         instructions_txt2 = self.font.render("Use the space bar to jump", True, (255, 255, 255))
-        instructions_txt1_rect = instructions_txt1.get_rect(center=(400, 270))
-        instructions_txt2_rect = instructions_txt2.get_rect(center=(400, 310))
+        instructions_txt1_rect = instructions_txt1.get_rect(center=(400, 290))
+        instructions_txt2_rect = instructions_txt2.get_rect(center=(400, 330))
         self.screen.blit(instructions_txt1, instructions_txt1_rect)
         self.screen.blit(instructions_txt2, instructions_txt2_rect)
     
@@ -104,6 +108,47 @@ class UI:
         
         restart_text = self.font.render("Press R to Restart", True, (255, 255, 255))
         restart_text_rect = restart_text.get_rect(center=(400, 320))
+        self.screen.blit(restart_text, restart_text_rect)
+
+    def draw_win_screen(self, score):
+        """Displays the win screen with congratulations."""
+        # Create semi-transparent black background
+        overlay = pygame.Surface((800, 600))
+        overlay.set_alpha(128)  # 50% transparency
+        overlay.fill((0, 0, 0))
+        self.screen.blit(overlay, (0, 0))
+        
+        # Draw menu background - made larger to accommodate longer text
+        menu_rect = pygame.Rect(150, 120, 500, 360)
+        pygame.draw.rect(self.screen, (50, 50, 50), menu_rect)  # Dark gray background
+        pygame.draw.rect(self.screen, (100, 100, 100), menu_rect, 3)  # Border
+        
+        # Draw congratulations title - split into two lines for better fit
+        title_surface1 = self.large_font.render("CONGRATULATIONS!", True, (0, 255, 0))  # Green color
+        title_rect1 = title_surface1.get_rect(center=(400, 180))
+        self.screen.blit(title_surface1, title_rect1)
+        
+        title_surface2 = self.font.render("YOU SAVED PAPA LOUIE'S SUNDAE!", True, (0, 255, 0))  # Green color
+        title_rect2 = title_surface2.get_rect(center=(400, 210))
+        self.screen.blit(title_surface2, title_rect2)
+        
+        # Draw "You beat the game!" message
+        message_surface = self.font.render("You beat the game!", True, (255, 255, 255))
+        message_rect = message_surface.get_rect(center=(400, 250))
+        self.screen.blit(message_surface, message_rect)
+        
+        # Draw score
+        score_text = self.font.render(f"Final Score: {score} coins", True, (255, 215, 0))  # Gold color
+        score_rect = score_text.get_rect(center=(400, 280))
+        self.screen.blit(score_text, score_rect)
+        
+        # Draw restart button
+        restart_rect = pygame.Rect(300, 320, 200, 40)
+        pygame.draw.rect(self.screen, (0, 128, 0), restart_rect)  # Green button
+        pygame.draw.rect(self.screen, (255, 255, 255), restart_rect, 2)  # White border
+        
+        restart_text = self.font.render("Press R to Restart", True, (255, 255, 255))
+        restart_text_rect = restart_text.get_rect(center=(400, 340))
         self.screen.blit(restart_text, restart_text_rect)
 
     def draw_score(self, score):

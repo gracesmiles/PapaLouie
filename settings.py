@@ -14,7 +14,7 @@ SETTINGS = {
 }
 
 PLAYER_SETTINGS = {
-    "speed": 2,         # How fast the player moves left/right (increased for responsiveness)
+    "speed": 0.7,         # How fast the player moves left/right (increased for responsiveness)
     "jump_power": 10,   # How high the player jumps (reduced from 18)
     "gravity": 0.3,     # Strength of gravity pulling the player down (reduced from 0.7)
 } 
@@ -41,6 +41,11 @@ PLATFORM_SETTINGS = {
         "image": "assets/images/platform01.png",
         "width": 120,
         "height": 50
+    },
+    "sundae": {
+        "image": "assets/images/sundae.png",
+        "width": 100,
+        "height": 100
     }
 }
 
@@ -48,7 +53,8 @@ GAME_STATES = {
     "MENU": "menu",
     "PLAYING": "playing",
     "GAME_OVER": "game_over",
-    "PAUSED": "paused"
+    "PAUSED": "paused",
+    "WIN": "win"
 }
 
 COLLECTIBLES = {
@@ -75,7 +81,7 @@ ENEMY_SETTINGS = {
     },
     "homing_enemy": {
         "image": ["assets/images/cookie_happy.png", "assets/images/cookie_angry.png"], 
-        "speed": 0.1,
+        "speed": .5,
         "health": 2,
         "width": 40,
         "height": 40
@@ -128,22 +134,39 @@ LEVELS = {
     },
     "level_2": {
         "platforms": [
+            # Ground platforms
+            {"x": 0, "y": 550, "type": "platform01"},
+            {"x": 110, "y": 550, "type": "platform01"},
+            {"x": 220, "y": 550, "type": "platform01"},
+            {"x": 400, "y": 550, "type": "platform01"},
+            {"x": 600, "y": 550, "type": "platform01"},
+            # {"x": 800, "y": 550, "type": "platform01"},
+            {"x": 1000, "y": 550, "type": "platform01"},
+            # {"x": 1200, "y": 550, "type": "platform01"},
+            # {"x": 1400, "y": 550, "type": "platform01"},
+            # {"x": 1600, "y": 550, "type": "platform01"},
+            {"x": 1600, "y": 550, "type": "platform01"},
+            {"x": 1710, "y": 550, "type": "platform01"},
+            {"x": 1710, "y": 440, "type": "sundae"},
+            
+            # Licorice platforms
             {"x": 100, "y": 500, "type": "licorice_normal"},
             {"x": 300, "y": 400, "type": "licorice_moving"},
             {"x": 500, "y": 300, "type": "licorice_normal"},
-            {"x": 700, "y": 200, "type": "licorice_normal"}
+            {"x": 700, "y": 200, "type": "licorice_normal"},
+            {"x": 1400, "y": 200, "type": "licorice_normal"}
         ],
         "collectibles": [
-            {"x": 100, "y": 350, "type": "coin"},
-            {"x": 320, "y": 370, "type": "coin"},
-            {"x": 520, "y": 270, "type": "coin"},
-            {"x": 720, "y": 170, "type": "coin"}
+            {"x": 150, "y": 470, "type": "coin"},
+            {"x": 350, "y": 370, "type": "coin"},
+            {"x": 550, "y": 270, "type": "coin"},
+            {"x": 750, "y": 170, "type": "coin"}
         ],
         "enemies": [
-            {"x": 350, "y": 350, "type": "fast_enemy"},   # On licorice platform
-            {"x": 850, "y": 200, "type": "homing_enemy"},    # On ground platform
-            {"x": 1050, "y": 5, "type": "homing_enemy"},  # On ground platform
-            {"x": 1450, "y": 500, "type": "fast_enemy"},   # On licorice platform
+            {"x": 350, "y": 470, "type": "fast_enemy"},   # On licorice platform
+            {"x": 850, "y": 500, "type": "homing_enemy"},    # On ground platform
+            {"x": 1050, "y": 500, "type": "homing_enemy"},  # On ground platform
+            {"x": 1450, "y": 500, "type": "fast_enemy"},   # On ground platform
             {"x": 1650, "y": 500, "type": "homing_enemy"}   # On ground platform
         ]
     }

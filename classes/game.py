@@ -62,3 +62,7 @@ class Game:
         """Checks if the game should end based on score or time."""
         # Remove automatic win condition - let player play until they lose all lives
         pass
+
+    def win_game(self):
+        """Sets the game state to win."""
+        self.state = GAME_STATES["WIN"]
