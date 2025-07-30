@@ -1,3 +1,0 @@
-"""
-Friendly characters you save
-"""
