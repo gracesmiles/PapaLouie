@@ -67,14 +67,14 @@ COLLECTIBLES = {
 ENEMY_SETTINGS = {
     "basic_enemy": {
         "image": ["assets/images/sundaesaurus.webp"],
-        "speed": 0.1,
+        "speed": 0.2,
         "health": 1,
         "width": 40,
         "height": 60
     },
     "fast_enemy": {
         "image": ["assets/images/sundaesaurus.webp"], 
-        "speed": 0.5,
+        "speed": 0.7,
         "health": 1,
         "width": 40,
         "height": 60
@@ -140,11 +140,7 @@ LEVELS = {
             {"x": 220, "y": 550, "type": "platform01"},
             {"x": 400, "y": 550, "type": "platform01"},
             {"x": 600, "y": 550, "type": "platform01"},
-            # {"x": 800, "y": 550, "type": "platform01"},
             {"x": 1000, "y": 550, "type": "platform01"},
-            # {"x": 1200, "y": 550, "type": "platform01"},
-            # {"x": 1400, "y": 550, "type": "platform01"},
-            # {"x": 1600, "y": 550, "type": "platform01"},
             {"x": 1600, "y": 550, "type": "platform01"},
             {"x": 1710, "y": 550, "type": "platform01"},
             {"x": 1710, "y": 440, "type": "sundae"},
