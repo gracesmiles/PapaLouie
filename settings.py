@@ -167,7 +167,7 @@ LEVELS = {
             {"x": 850, "y": 500, "type": "homing_enemy"},    # On ground platform
             {"x": 1050, "y": 500, "type": "homing_enemy"},  # On ground platform
             {"x": 1100, "y": 500, "type": "fast_enemy"},   # On ground platform
-            {"x": 400, "y": 500, "type": "fast_enemy"},   # On ground platform
+            {"x": 450, "y": 500, "type": "fast_enemy"},   # On ground platform
             {"x": 1650, "y": 500, "type": "homing_enemy"}   # On ground platform
         ]
     }
