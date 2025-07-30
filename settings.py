@@ -128,7 +128,7 @@ LEVELS = {
             {"x": 700, "y": 200, "type": "licorice_normal"}
         ],
         "collectibles": [
-            {"x": 230, "y": 470, "type": "coin"},
+            {"x": 100, "y": 350, "type": "coin"},
             {"x": 320, "y": 370, "type": "coin"},
             {"x": 520, "y": 270, "type": "coin"},
             {"x": 720, "y": 170, "type": "coin"}
@@ -144,7 +144,7 @@ LEVELS = {
 }
 
 """
-needed to do testing
+needed to do testing. these are level 1 collectibles
             {"x": 450, "y": 270, "type": "coin"},
             {"x": 650, "y": 320, "type": "coin"},
             {"x": 850, "y": 170, "type": "coin"},
